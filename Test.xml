@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="TWAPIRequest" representedClassName="TWAPIRequest" syncable="YES">
+        <attribute name="isRequired" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="queue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TWCaseQueue" inverseName="requests" inverseEntity="TWCaseQueue" syncable="YES"/>
+    </entity>
+    <entity name="TWAPIRequestCase" representedClassName="TWAPIRequestCase" parentEntity="TWAPIRequest" syncable="YES">
+        <attribute name="parameters" attributeType="Transformable" valueTransformerName="FSTransformer" syncable="YES">
+            <userInfo>
+                <entry key="attributeValueClassName" value="NSDictionary"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="TWAPIRequestChat" representedClassName="TWAPIRequestChat" parentEntity="TWAPIRequest" syncable="YES">
+        <attribute name="parameters" attributeType="Transformable" valueTransformerName="FSTransformer" syncable="YES">
+            <userInfo>
+                <entry key="attributeValueClassName" value="NSDictionary"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="TWAPIRequestLocation" representedClassName="TWAPIRequestLocation" parentEntity="TWAPIRequest" syncable="YES">
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="TWAPIRequestPushNotification" representedClassName="TWAPIRequestPushNotification" parentEntity="TWAPIRequest" syncable="YES">
+        <relationship name="message" maxCount="1" deletionRule="Nullify" destinationEntity="TWCMessageText" inverseName="pushNotifications" inverseEntity="TWCMessageText" syncable="YES"/>
+    </entity>
+    <entity name="TWAPIRequestTag" representedClassName="TWAPIRequestTag" parentEntity="TWAPIRequest" syncable="YES">
+        <attribute name="enabled" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="tagID" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TWAPIRequestUpload" representedClassName="TWAPIRequestUpload" parentEntity="TWAPIRequest" syncable="YES">
+        <attribute name="fileID" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TWCase" representedClassName="TWCase" parentEntity="TWObject" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 16" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="agePeriod" optional="YES" attributeType="Integer 16" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="arrivedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="beganAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="beganAt"/>
+            </userInfo>
+        </attribute>
+        <attribute name="caseNumber" optional="YES" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="channelId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="closedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" minValueString="1" maxValueString="1" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="id"/>
+            </userInfo>
+        </attribute>
+        <relationship name="complaint" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TWComplaint" inverseName="cases" inverseEntity="TWComplaint" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="createdBy" maxCount="1" deletionRule="Nullify" destinationEntity="TWUser" inverseName="casesCreated" inverseEntity="TWUser" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="destinationHospital" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TWHospital" inverseName="cases" inverseEntity="TWHospital" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="emsAgency" maxCount="1" deletionRule="Nullify" destinationEntity="TWEMSAgency" inverseName="cases" inverseEntity="TWEMSAgency" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="files" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TWFile" inverseName="userCase" inverseEntity="TWFile" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TWChatMessage" inverseName="userCase" inverseEntity="TWChatMessage" syncable="YES"/>
+        <relationship name="queue" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TWCaseQueue" inverseName="queueCase" inverseEntity="TWCaseQueue" syncable="YES"/>
+        <relationship name="selectedTags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWTag" inverseName="cases" inverseEntity="TWTag" syncable="YES"/>
+        <relationship name="truck" maxCount="1" deletionRule="Nullify" destinationEntity="TWTruck" inverseName="cases" inverseEntity="TWTruck" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="updatedBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TWUser" inverseName="casesUpdated" inverseEntity="TWUser" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <userInfo>
+            <entry key="relatedByAttribute" value="id"/>
+        </userInfo>
+    </entity>
+    <entity name="TWCaseQueue" representedClassName="TWCaseQueue" syncable="YES">
+        <relationship name="queueCase" maxCount="1" deletionRule="Nullify" destinationEntity="TWCase" inverseName="queue" inverseEntity="TWCase" syncable="YES"/>
+        <relationship name="requests" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TWAPIRequest" inverseName="queue" inverseEntity="TWAPIRequest" syncable="YES"/>
+    </entity>
+    <entity name="TWChatMessage" representedClassName="TWChatMessage" isAbstract="YES" parentEntity="TWObject" syncable="YES">
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="isRead" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="senderOrganization" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="createdBy" maxCount="1" deletionRule="Nullify" destinationEntity="TWUser" inverseName="messages" inverseEntity="TWUser" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="userCase" maxCount="1" deletionRule="Nullify" destinationEntity="TWCase" inverseName="messages" inverseEntity="TWCase" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="TWCMessageText" representedClassName="TWCMessageText" parentEntity="TWChatMessage" syncable="YES">
+        <attribute name="content" attributeType="String" syncable="YES"/>
+        <relationship name="pushNotifications" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TWAPIRequestPushNotification" inverseName="message" inverseEntity="TWAPIRequestPushNotification" syncable="YES"/>
+    </entity>
+    <entity name="TWComplaint" representedClassName="TWComplaint" parentEntity="TWObject" syncable="YES">
+        <attribute name="archived" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="complaintSet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="priority" attributeType="Integer 16" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="showInterventions" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="showOnsets" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="showSymptoms" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="showVitals" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="cases" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TWCase" inverseName="complaint" inverseEntity="TWCase" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TWTag" inverseName="complaints" inverseEntity="TWTag" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="TWEMSAgency" representedClassName="TWEMSAgency" parentEntity="TWObject" syncable="YES">
+        <attribute name="complaintSet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="maxCaseLength" optional="YES" attributeType="Integer 16" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="administrators" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWUser" inverseName="emsAgenciesAdministered" inverseEntity="TWUser" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="cases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWCase" inverseName="emsAgency" inverseEntity="TWCase" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="hospitals" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TWHospital" inverseName="emsAgencies" inverseEntity="TWHospital" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWUser" inverseName="emsAgencyMemberships" inverseEntity="TWUser" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TWSession" inverseName="emsAgency" inverseEntity="TWSession" syncable="YES"/>
+        <relationship name="trucks" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TWTruck" inverseName="agencies" inverseEntity="TWTruck" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="TWFile" representedClassName="TWFile" parentEntity="TWObject" syncable="YES">
+        <attribute name="data" attributeType="Binary" syncable="YES"/>
+        <attribute name="deviceCreatedAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="userCase" maxCount="1" deletionRule="Nullify" destinationEntity="TWCase" inverseName="files" inverseEntity="TWCase" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="TWHospital" representedClassName="TWHospital" parentEntity="TWObject" syncable="YES">
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="location" optional="YES" attributeType="Transformable" valueTransformerName="FSTransformer" syncable="YES">
+            <userInfo>
+                <entry key="attributeValueClassName" value="CLLocation"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="administrators" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWUser" inverseName="hospitalsAdministrated" inverseEntity="TWUser" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="cases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWCase" inverseName="destinationHospital" inverseEntity="TWCase" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="emsAgencies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWEMSAgency" inverseName="hospitals" inverseEntity="TWEMSAgency" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWUser" inverseName="hospitalsMemberships" inverseEntity="TWUser" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="TWObject" representedClassName="TWObject" isAbstract="YES" syncable="YES">
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="timestamp"/>
+                <entry key="mappedKeyName.1" value="createdAt"/>
+            </userInfo>
+        </attribute>
+        <attribute name="localUpdatedAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="TWSession" representedClassName="TWSession" syncable="YES">
+        <attribute name="shiftEnds" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="emsAgency" maxCount="1" deletionRule="Nullify" destinationEntity="TWEMSAgency" inverseName="session" inverseEntity="TWEMSAgency" syncable="YES"/>
+        <relationship name="truck" maxCount="1" deletionRule="Nullify" destinationEntity="TWTruck" inverseName="session" inverseEntity="TWTruck" syncable="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="TWUser" inverseName="session" inverseEntity="TWUser" syncable="YES"/>
+    </entity>
+    <entity name="TWTag" representedClassName="TWTag" parentEntity="TWObject" syncable="YES">
+        <attribute name="groupIdentifier" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="isSelected" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="typeIdentifier" attributeType="String" syncable="YES"/>
+        <relationship name="cases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWCase" inverseName="selectedTags" inverseEntity="TWCase" syncable="YES"/>
+        <relationship name="complaints" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWComplaint" inverseName="tags" inverseEntity="TWComplaint" syncable="YES"/>
+    </entity>
+    <entity name="TWTruck" representedClassName="TWTruck" parentEntity="TWObject" syncable="YES">
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="isALS" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="agencies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWEMSAgency" inverseName="trucks" inverseEntity="TWEMSAgency" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="cases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWCase" inverseName="truck" inverseEntity="TWCase" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TWSession" inverseName="truck" inverseEntity="TWSession" syncable="YES"/>
+    </entity>
+    <entity name="TWUser" representedClassName="TWUser" parentEntity="TWObject" syncable="YES">
+        <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="_id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profileImageUrl" optional="YES" attributeType="Transformable" valueTransformerName="FSTransformer" syncable="YES">
+            <userInfo>
+                <entry key="attributeValueClassName" value="NSURL"/>
+            </userInfo>
+        </attribute>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="casesCreated" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWCase" inverseName="createdBy" inverseEntity="TWCase" syncable="YES"/>
+        <relationship name="casesUpdated" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWCase" inverseName="updatedBy" inverseEntity="TWCase" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="credential" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TWUserCredential" inverseName="user" inverseEntity="TWUserCredential" syncable="YES"/>
+        <relationship name="emsAgenciesAdministered" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TWEMSAgency" inverseName="administrators" inverseEntity="TWEMSAgency" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="emsAgencyMemberships" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TWEMSAgency" inverseName="members" inverseEntity="TWEMSAgency" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="hospitalsAdministrated" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWHospital" inverseName="administrators" inverseEntity="TWHospital" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="hospitalsMemberships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWHospital" inverseName="members" inverseEntity="TWHospital" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TWChatMessage" inverseName="createdBy" inverseEntity="TWChatMessage" syncable="YES"/>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TWSession" inverseName="user" inverseEntity="TWSession" syncable="YES"/>
+        <userInfo>
+            <entry key="relatedByAttribute" value="id"/>
+        </userInfo>
+    </entity>
+    <entity name="TWUserCredential" representedClassName="TWUserCredential" syncable="YES">
+        <attribute name="expirationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="expirationDate"/>
+            </userInfo>
+        </attribute>
+        <attribute name="token" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="token"/>
+            </userInfo>
+        </attribute>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TWUser" inverseName="credential" inverseEntity="TWUser" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="id"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <elements>
+        <element name="TWAPIRequest" positionX="765" positionY="438" width="128" height="73"/>
+        <element name="TWAPIRequestCase" positionX="963" positionY="441" width="128" height="60"/>
+        <element name="TWAPIRequestChat" positionX="880" positionY="564" width="128" height="30"/>
+        <element name="TWAPIRequestLocation" positionX="781" positionY="611" width="128" height="28"/>
+        <element name="TWAPIRequestTag" positionX="754" positionY="297" width="128" height="28"/>
+        <element name="TWAPIRequestUpload" positionX="601" positionY="360" width="128" height="28"/>
+        <element name="TWCase" positionX="232" positionY="387" width="128" height="328"/>
+        <element name="TWCaseQueue" positionX="486" positionY="441" width="128" height="58"/>
+        <element name="TWChatMessage" positionX="493" positionY="45" width="128" height="148"/>
+        <element name="TWCMessageText" positionX="-63" positionY="180" width="128" height="75"/>
+        <element name="TWComplaint" positionX="-72" positionY="189" width="128" height="225"/>
+        <element name="TWEMSAgency" positionX="-27" positionY="72" width="128" height="195"/>
+        <element name="TWFile" positionX="-81" positionY="180" width="128" height="120"/>
+        <element name="TWHospital" positionX="196" positionY="45" width="128" height="150"/>
+        <element name="TWObject" positionX="-936" positionY="36" width="128" height="90"/>
+        <element name="TWSession" positionX="-99" positionY="291" width="128" height="105"/>
+        <element name="TWTag" positionX="54" positionY="468" width="128" height="150"/>
+        <element name="TWTruck" positionX="-90" positionY="360" width="128" height="135"/>
+        <element name="TWUser" positionX="-36" positionY="27" width="128" height="285"/>
+        <element name="TWUserCredential" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="TWAPIRequestPushNotification" positionX="-738" positionY="171" width="128" height="60"/>
+    </elements>
+</model>

@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08C34FA4E7113B77F0C82002 /* TWAPIRequestChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2436A296028039019E4EC82B /* TWAPIRequestChat.swift */; };
+		0DF97FB378AE4964D682D049 /* TWAPIRequestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E031C511BA7CFC180AD6A2 /* TWAPIRequestCase.swift */; };
+		1514EF22E22CCE6CF14AC54D /* TWComplaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889716DAD9D66F74C73C6CD2 /* TWComplaint.swift */; };
+		196F956A690099E3F21F4B38 /* TWAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7703E832BABCF04EF831D7 /* TWAPIRequest.swift */; };
+		2ECEB65B182210BE5A20215C /* TWCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B680987551443B5C4F7C1F /* TWCase.swift */; };
+		5696FA9064BE217B3D4EEEB0 /* TWUserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D7DB814F11239DCCD8C983 /* TWUserCredential.swift */; };
+		5A95A3EDAC410EA77578BB13 /* TWCaseQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFEBDA8CB7CBE2A9A458AC7 /* TWCaseQueue.swift */; };
+		67228866AEE93677D809AAF4 /* TWTruck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02EA8753A8298D5B1799C2 /* TWTruck.swift */; };
+		769503CBBEDA701F13F91094 /* TWTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A2C912566DA8A99E17CD75 /* TWTag.swift */; };
+		7A94F17A47FB811D6F32B4D2 /* TWChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4C53BDB608E78630C39C7F /* TWChatMessage.swift */; };
+		7BECC778B854A79E476655A7 /* TWSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E9DB432B98977381D881A9 /* TWSession.swift */; };
+		82393F85D906D3EA79808354 /* TWAPIRequestPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171483AC9EE7C9174A62418 /* TWAPIRequestPushNotification.swift */; };
+		8998FEF646F84AC27C24C00A /* TWAPIRequestUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A077B8FE5CC2D368AB52AF /* TWAPIRequestUpload.swift */; };
+		941D261B34AD5DD9EF28B2AE /* TWObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB4E69D6FB37AF27A252335 /* TWObject.swift */; };
+		A395D677BBD6AC5667791AB2 /* TWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1649D0D6802690165220F2 /* TWUser.swift */; };
 		A4CC1FE91EA9F8C0000A3A81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC1FE81EA9F8C0000A3A81 /* AppDelegate.swift */; };
 		A4CC1FEB1EA9F8C0000A3A81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC1FEA1EA9F8C0000A3A81 /* ViewController.swift */; };
 		A4CC1FEE1EA9F8C0000A3A81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CC1FEC1EA9F8C0000A3A81 /* Main.storyboard */; };
@@ -14,6 +29,12 @@
 		A4CC1FF31EA9F8C0000A3A81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CC1FF11EA9F8C0000A3A81 /* LaunchScreen.storyboard */; };
 		A4CC1FFE1EA9F8C0000A3A81 /* TestCodegenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC1FFD1EA9F8C0000A3A81 /* TestCodegenTests.swift */; };
 		A4CC20091EA9F8C0000A3A81 /* TestCodegenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC20081EA9F8C0000A3A81 /* TestCodegenUITests.swift */; };
+		C485772866F7300405938424 /* TWHospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACDFD321DBB21E1B42D779 /* TWHospital.swift */; };
+		DA8D67CBE0CD48A50F99202C /* TWAPIRequestLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724F86E9D68D9F0E6FF33373 /* TWAPIRequestLocation.swift */; };
+		E39A67834D1EFB8301168B98 /* TWCMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6317E927351FE3446A897B4F /* TWCMessageText.swift */; };
+		E6856C53BDA48C5DE9117E50 /* TWFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9AF937DE2EF7173110A2F4 /* TWFile.swift */; };
+		EDEA5ECE511751F3A9387F3B /* TWEMSAgency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F6FBA48FF038AD814D93F2 /* TWEMSAgency.swift */; };
+		F63E500DD58AB3201673C5FC /* TWAPIRequestTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534C99EC8F76DC8EACCEB70 /* TWAPIRequestTag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +55,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14E031C511BA7CFC180AD6A2 /* TWAPIRequestCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestCase.swift; sourceTree = "<group>"; };
+		2436A296028039019E4EC82B /* TWAPIRequestChat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestChat.swift; sourceTree = "<group>"; };
+		3E1649D0D6802690165220F2 /* TWUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWUser.swift; sourceTree = "<group>"; };
+		4BFEBDA8CB7CBE2A9A458AC7 /* TWCaseQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWCaseQueue.swift; sourceTree = "<group>"; };
+		54D7DB814F11239DCCD8C983 /* TWUserCredential.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWUserCredential.swift; sourceTree = "<group>"; };
+		5534C99EC8F76DC8EACCEB70 /* TWAPIRequestTag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestTag.swift; sourceTree = "<group>"; };
+		6317E927351FE3446A897B4F /* TWCMessageText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWCMessageText.swift; sourceTree = "<group>"; };
+		7171483AC9EE7C9174A62418 /* TWAPIRequestPushNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestPushNotification.swift; sourceTree = "<group>"; };
+		724F86E9D68D9F0E6FF33373 /* TWAPIRequestLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestLocation.swift; sourceTree = "<group>"; };
+		78A2C912566DA8A99E17CD75 /* TWTag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWTag.swift; sourceTree = "<group>"; };
+		889716DAD9D66F74C73C6CD2 /* TWComplaint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWComplaint.swift; sourceTree = "<group>"; };
+		8C02EA8753A8298D5B1799C2 /* TWTruck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWTruck.swift; sourceTree = "<group>"; };
+		90B680987551443B5C4F7C1F /* TWCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWCase.swift; sourceTree = "<group>"; };
+		92E9DB432B98977381D881A9 /* TWSession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWSession.swift; sourceTree = "<group>"; };
+		9FB4E69D6FB37AF27A252335 /* TWObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWObject.swift; sourceTree = "<group>"; };
 		A4CC1FE51EA9F8C0000A3A81 /* TestCodegen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCodegen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CC1FE81EA9F8C0000A3A81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4CC1FEA1EA9F8C0000A3A81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +83,12 @@
 		A4CC20041EA9F8C0000A3A81 /* TestCodegenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestCodegenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CC20081EA9F8C0000A3A81 /* TestCodegenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCodegenUITests.swift; sourceTree = "<group>"; };
 		A4CC200A1EA9F8C0000A3A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB7703E832BABCF04EF831D7 /* TWAPIRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequest.swift; sourceTree = "<group>"; };
+		C8F6FBA48FF038AD814D93F2 /* TWEMSAgency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWEMSAgency.swift; sourceTree = "<group>"; };
+		CA9AF937DE2EF7173110A2F4 /* TWFile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWFile.swift; sourceTree = "<group>"; };
+		CB4C53BDB608E78630C39C7F /* TWChatMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWChatMessage.swift; sourceTree = "<group>"; };
+		CBACDFD321DBB21E1B42D779 /* TWHospital.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWHospital.swift; sourceTree = "<group>"; };
+		F9A077B8FE5CC2D368AB52AF /* TWAPIRequestUpload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestUpload.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +116,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72D5CA09FEA5DD5AAFA40859 /* Test_generated */ = {
+			isa = PBXGroup;
+			children = (
+				EB57992C11F95C0D412B3FC5 /* Some */,
+				AB7703E832BABCF04EF831D7 /* TWAPIRequest.swift */,
+				14E031C511BA7CFC180AD6A2 /* TWAPIRequestCase.swift */,
+				2436A296028039019E4EC82B /* TWAPIRequestChat.swift */,
+				724F86E9D68D9F0E6FF33373 /* TWAPIRequestLocation.swift */,
+				7171483AC9EE7C9174A62418 /* TWAPIRequestPushNotification.swift */,
+				5534C99EC8F76DC8EACCEB70 /* TWAPIRequestTag.swift */,
+				F9A077B8FE5CC2D368AB52AF /* TWAPIRequestUpload.swift */,
+				90B680987551443B5C4F7C1F /* TWCase.swift */,
+				4BFEBDA8CB7CBE2A9A458AC7 /* TWCaseQueue.swift */,
+				CB4C53BDB608E78630C39C7F /* TWChatMessage.swift */,
+				6317E927351FE3446A897B4F /* TWCMessageText.swift */,
+				889716DAD9D66F74C73C6CD2 /* TWComplaint.swift */,
+				C8F6FBA48FF038AD814D93F2 /* TWEMSAgency.swift */,
+				CA9AF937DE2EF7173110A2F4 /* TWFile.swift */,
+				CBACDFD321DBB21E1B42D779 /* TWHospital.swift */,
+				9FB4E69D6FB37AF27A252335 /* TWObject.swift */,
+				92E9DB432B98977381D881A9 /* TWSession.swift */,
+				78A2C912566DA8A99E17CD75 /* TWTag.swift */,
+				8C02EA8753A8298D5B1799C2 /* TWTruck.swift */,
+				3E1649D0D6802690165220F2 /* TWUser.swift */,
+				54D7DB814F11239DCCD8C983 /* TWUserCredential.swift */,
+			);
+			name = Test_generated;
+			path = TestCodegen/Generated;
+			sourceTree = "<group>";
+		};
 		A4CC1FDC1EA9F8C0000A3A81 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +153,7 @@
 				A4CC1FFC1EA9F8C0000A3A81 /* TestCodegenTests */,
 				A4CC20071EA9F8C0000A3A81 /* TestCodegenUITests */,
 				A4CC1FE61EA9F8C0000A3A81 /* Products */,
+				72D5CA09FEA5DD5AAFA40859 /* Test_generated */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +196,14 @@
 				A4CC200A1EA9F8C0000A3A81 /* Info.plist */,
 			);
 			path = TestCodegenUITests;
+			sourceTree = "<group>";
+		};
+		EB57992C11F95C0D412B3FC5 /* Some */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Some;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +274,7 @@
 				TargetAttributes = {
 					A4CC1FE41EA9F8C0000A3A81 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 3EZN9G7JS8;
 						ProvisioningStyle = Automatic;
 					};
 					A4CC1FF81EA9F8C0000A3A81 = {
@@ -261,6 +343,27 @@
 			files = (
 				A4CC1FEB1EA9F8C0000A3A81 /* ViewController.swift in Sources */,
 				A4CC1FE91EA9F8C0000A3A81 /* AppDelegate.swift in Sources */,
+				196F956A690099E3F21F4B38 /* TWAPIRequest.swift in Sources */,
+				0DF97FB378AE4964D682D049 /* TWAPIRequestCase.swift in Sources */,
+				08C34FA4E7113B77F0C82002 /* TWAPIRequestChat.swift in Sources */,
+				DA8D67CBE0CD48A50F99202C /* TWAPIRequestLocation.swift in Sources */,
+				82393F85D906D3EA79808354 /* TWAPIRequestPushNotification.swift in Sources */,
+				F63E500DD58AB3201673C5FC /* TWAPIRequestTag.swift in Sources */,
+				8998FEF646F84AC27C24C00A /* TWAPIRequestUpload.swift in Sources */,
+				2ECEB65B182210BE5A20215C /* TWCase.swift in Sources */,
+				5A95A3EDAC410EA77578BB13 /* TWCaseQueue.swift in Sources */,
+				7A94F17A47FB811D6F32B4D2 /* TWChatMessage.swift in Sources */,
+				E39A67834D1EFB8301168B98 /* TWCMessageText.swift in Sources */,
+				1514EF22E22CCE6CF14AC54D /* TWComplaint.swift in Sources */,
+				EDEA5ECE511751F3A9387F3B /* TWEMSAgency.swift in Sources */,
+				E6856C53BDA48C5DE9117E50 /* TWFile.swift in Sources */,
+				C485772866F7300405938424 /* TWHospital.swift in Sources */,
+				941D261B34AD5DD9EF28B2AE /* TWObject.swift in Sources */,
+				7BECC778B854A79E476655A7 /* TWSession.swift in Sources */,
+				769503CBBEDA701F13F91094 /* TWTag.swift in Sources */,
+				67228866AEE93677D809AAF4 /* TWTruck.swift in Sources */,
+				A395D677BBD6AC5667791AB2 /* TWUser.swift in Sources */,
+				5696FA9064BE217B3D4EEEB0 /* TWUserCredential.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +517,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3EZN9G7JS8;
 				INFOPLIST_FILE = TestCodegen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fs.TestCodegen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,7 +531,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3EZN9G7JS8;
 				INFOPLIST_FILE = TestCodegen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fs.TestCodegen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -507,6 +614,7 @@
 				A4CC200F1EA9F8C0000A3A81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4CC20101EA9F8C0000A3A81 /* Build configuration list for PBXNativeTarget "TestCodegenTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +623,7 @@
 				A4CC20121EA9F8C0000A3A81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4CC20131EA9F8C0000A3A81 /* Build configuration list for PBXNativeTarget "TestCodegenUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +632,7 @@
 				A4CC20151EA9F8C0000A3A81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

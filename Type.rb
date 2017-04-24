@@ -19,7 +19,24 @@ class Type
 		end
 		
 		result_type
+	end
 
+	def self.defaultValue(type)
+
+		default_value = case type
+		when "Date"			then "Date()"
+		when "Int"			then "0"
+		when "NSNumber"		then "0"
+		when "Double"		then "0.0"
+		when "Float"		then "0.0"
+		when "Bool"			then "false"
+		when "String"		then "\"\""
+		when "Data"			then "Data()"
+		when "NSDictionary" then "NSDictionary()"	
+		else "\"\""
+		end
+
+		return default_value
 	end
 
 end

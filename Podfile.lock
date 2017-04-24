@@ -1,0 +1,31 @@
+PODS:
+  - Alamofire (4.4.0)
+  - Realm (2.6.2):
+    - Realm/Headers (= 2.6.2)
+  - Realm/Headers (2.6.2)
+  - RealmSwift (2.6.2):
+    - Realm (= 2.6.2)
+  - SwiftyJSON (3.1.4)
+  - Swinject (2.1.0)
+  - SwinjectStoryboard (1.1.1):
+    - Swinject (~> 2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Realm
+  - RealmSwift
+  - SwiftyJSON
+  - Swinject
+  - SwinjectStoryboard
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Realm: 29222766425b9f831228f81b63f0e38a97a4d700
+  RealmSwift: d161a80f96cb91ae88391a7d5a9cf08024a7bc8e
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Swinject: 85e468ac75c5c2d234076f98c591d57d56bc64bc
+  SwinjectStoryboard: 4c71c25f312322844d39ee06f0f523db7b9b10a3
+
+PODFILE CHECKSUM: aed9f587e23b5262368697d344a6c716826c6fdd
+
+COCOAPODS: 1.2.1

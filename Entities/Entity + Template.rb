@@ -1,16 +1,12 @@
 class EntityTemplate
 
-	def self.generateTemplate(entity, header, entities)
+	def self.generateMachineTemplate(entity, header, entities)
 
 		result = header
 
-		if entity.children.length == 0
-			result += "final "
-		end
-
-		result += "class #{entity.name}"
+		result += "class _#{entity.name}"
 		if entity.parent != nil 
-			result += ": #{entity.parent.name} {\n"
+			result += ": _#{entity.parent.name} {\n"
 		else
 			result += " {\n"
 		end
@@ -148,6 +144,105 @@ class EntityTemplate
 		result
 
 	end
+
+	def self.generateHumanTemplate(entity, header, entities)
+		result = header
+		result += "final class #{entity.name}: _#{entity.name} {\n\t//Custom code goes here..\n}\n"
+		return result
+	end
+
+	def self.generateModel(entity, header, entities)
+		result = header
+		result += "import RealmSwift\n\n"
+		if entity.children.length == 0
+			result += "final "
+		end
+		result += "class EN#{entity.name}"
+		if entity.parent != nil 
+			result += ": EN#{entity.parent.name} {\n"
+		else 
+			result += ": RealmSwift.Object {\n"
+		end 
+		result += "\n"
+
+		if entity.attributes.length != 0
+			result += "\t//MARK: - Attributes\n"
+		end
+
+		entity.attributes.each do |attr|
+			temp_string = ""
+			if attr.is_optional == "YES"
+				if attr.type == "Int" || attr.type == "Float" || attr.type == "Double" || attr.type == "Bool" || attr.type == "Int8" || attr.type == "Int16"|| attr.type == "Int32" || attr.type == "Int64"   
+					temp_string += "let #{attr.name} = RealmOptional<#{attr.type}>()"
+				else
+					temp_string += "dynamic var #{attr.name}: #{attr.type}?"
+				end
+			else 
+				temp_string += "dynamic var #{attr.name}: #{attr.type} = #{Type::defaultValue(attr.type)}"
+			end
+			result += "\t#{temp_string}\n"
+		end
+
+		if entity.relationships.length != 0
+			result += "\n\t//MARK: - Relationships\n"
+		end
+
+		entity.relationships.each do |rel|
+			temp_string = ""
+			if rel.toMany == "YES"
+				temp_string = "let #{rel.name} = List<EN#{rel.destinationEntity}>()"
+			else 
+				temp_string += "dynamic var #{rel.name}: EN#{rel.destinationEntity}?"
+			end
+			result += "\t#{temp_string}\n"
+		end
+
+		# entity.relationships.each do |rel|
+		# 	constructor_string.push("\t\tself.#{rel.name} = #{rel.name}") 
+		# 	relationship_string = ""
+		# 	if rel.toMany == "YES"
+		# 		relationship_string = "[#{rel.destinationEntity}]"
+		# 	else
+		# 		relationship_string = "#{rel.destinationEntity}"
+		# 	end
+		# 	if rel.is_optional == "YES"
+		# 		relationship_string += "?"
+		# 	end
+		# 	temp_string = "#{rel.name}: #{relationship_string}"
+		# 	result += "\tlet #{temp_string}\n"
+		# 	init_string.push(temp_string) 
+		# end
+
+		result += "\n}\n"
+		return result
+	end	
+
+# 	import RealmSwift
+
+# final class ENCase: Object {
+    
+#     static override func primaryKey() -> String {
+#         return #keyPath(ENCase.id)
+#     }
+    
+#     //MARK: - Attributes
+#     dynamic var id         : String = String.empty
+#     dynamic var caseNumber : Int = 0
+#     dynamic var beganAt    : Date?
+    
+#     //MARK: - Relationships
+#     dynamic var complaint    : ENComplaint?
+#     dynamic var destinationHospital: ENHospital?
+#     dynamic var emsAgency    : ENAgency?
+#     dynamic var user         : ENUser?
+#     dynamic var truck        : ENTruck?
+#     dynamic var lastLocation : ENLocation?
+#     let uploads   = List<ENUpload>()
+#     let messages  = LinkingObjects(fromType: ENMessage.self, property: #keyPath(ENMessage.twCase))
+    
+# }
+
+	#Helpers
 
 	def self.recursiveAttributes(entity)
 		attributes = Array.new

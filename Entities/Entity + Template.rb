@@ -183,18 +183,26 @@ class EntityTemplate
 			result += "\t#{temp_string}\n"
 		end
 
-		if entity.relationships.length != 0
-			result += "\n\t//MARK: - Relationships\n"
+		one_to_one_relationships = entity.relationships.select { |r| r.toMany == "NO" }
+		one_to_many_relationships = entity.relationships.select { |r| r.toMany == "YES" }
+
+		if one_to_one_relationships.length != 0
+
+			result += "\n\t//MARK: - One-to-one relationships\n"
+
+			one_to_one_relationships.each do |rel|
+				puts rel
+				result += "\tdynamic var #{rel.name}: EN#{rel.destinationEntity}?\n"
+			end
 		end
 
-		entity.relationships.each do |rel|
-			temp_string = ""
-			if rel.toMany == "YES"
-				temp_string = "let #{rel.name} = List<EN#{rel.destinationEntity}>()"
-			else 
-				temp_string += "dynamic var #{rel.name}: EN#{rel.destinationEntity}?"
+		if one_to_many_relationships.length != 0
+
+			result += "\n\t//MARK: - One-to-many relationships\n"
+
+			one_to_many_relationships.each do |rel|
+				result += "\tlet #{rel.name} = List<EN#{rel.destinationEntity}>()\n"
 			end
-			result += "\t#{temp_string}\n"
 		end
 
 		# entity.relationships.each do |rel|

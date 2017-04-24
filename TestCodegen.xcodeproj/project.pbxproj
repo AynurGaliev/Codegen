@@ -7,48 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02A639A2A3D2FA019BD374C9 /* _TWComplaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3E11943A47EFA5E5D2FEE /* _TWComplaint.swift */; };
-		03F369E81CC8EABF50C656CE /* ENTWTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5DF96635B76682F7A240A /* ENTWTag.swift */; };
-		06BF2BED363CA0A218C3B319 /* _TWAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC7D0C2219DC4BEB756306F /* _TWAPIRequest.swift */; };
-		06D4056CD4E8653DB3490D66 /* _TWUserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F250CEED8ACB952F26C5F8 /* _TWUserCredential.swift */; };
-		0A2E0BF9C7C56A6952A576ED /* TWAPIRequestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255D1075E5B6AAF3E1AED074 /* TWAPIRequestCase.swift */; };
-		0BBB7069780B80189E172376 /* TWAPIRequestUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421A833ACFFD330D687961A8 /* TWAPIRequestUpload.swift */; };
-		0D2AE19CD5B467404BD78FE7 /* _TWAPIRequestPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2165ED05AE8E400FEE5BFC /* _TWAPIRequestPushNotification.swift */; };
-		10EBA02C3203493C85B8936C /* TWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AFBDE8645D5446D7342D3 /* TWUser.swift */; };
-		16ACBD0B94439DEB914759E4 /* TWChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC47F77A42D9988382D826AA /* TWChatMessage.swift */; };
-		19690203372609B1CA4D5E22 /* TWAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9108D59F88DA28E14A06964E /* TWAPIRequest.swift */; };
-		1A51BA30BF3D9CA405118AC1 /* ENTWEMSAgency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851FF7D291D73FA40A6202C7 /* ENTWEMSAgency.swift */; };
-		1CD6A6CDA9EB6A48C9C8DD10 /* ENTWFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1B96896A9BDDB53F555F97 /* ENTWFile.swift */; };
-		207CCAD76A9621F3814A3DCC /* ENTWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD34407EE1909B6226A7579 /* ENTWUser.swift */; };
-		20F2C027FA8CD1CC44DE9A06 /* _TWTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27956D4AA365ED833420C2 /* _TWTag.swift */; };
-		25F60FAD2FD649DB81128D02 /* _TWHospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251E9EA0C51D16BA6A868EA /* _TWHospital.swift */; };
-		36145E8508B36261D1DD63BF /* TWObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8E6BF2D7ED5A39D10A8F9 /* TWObject.swift */; };
-		3976AAC55626BCFAEEC0681B /* _TWAPIRequestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EC74A6000127C5E225286 /* _TWAPIRequestCase.swift */; };
-		3B3A260C39A1B6FD7FBA2B22 /* TWAPIRequestTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C85C7BF1FC3131E9FB696E4 /* TWAPIRequestTag.swift */; };
-		3D20A0C942F74C676DBCC1FA /* ENTWTruck.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13BA632E580EF1EB21D27FF /* ENTWTruck.swift */; };
-		40D8C223B1B81A5AC70C85F5 /* TWEMSAgency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C62B03BB6D06241681028 /* TWEMSAgency.swift */; };
-		4A15E17825B9313E2FC7BD24 /* TWAPIRequestPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D613A30727921DB3989F5E /* TWAPIRequestPushNotification.swift */; };
-		4AF27F9D73A9752A6860F3F6 /* _TWCaseQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCCADD6D78597D3D8005FAF /* _TWCaseQueue.swift */; };
-		4E4F448C25B5D3A3AADCD16E /* _TWFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1EF989FAB23C2C6C4117D /* _TWFile.swift */; };
-		5675DABB8E9DE16D0B724F8A /* ENTWHospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625F39157A70B1419CF9744 /* ENTWHospital.swift */; };
-		64F276813449775B507EC63F /* ENTWSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC382A5A3033EB9695D9FE /* ENTWSession.swift */; };
-		6887FEA1CF30009C21E3187A /* ENTWAPIRequestPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BAC404E1F86EB859824C8F /* ENTWAPIRequestPushNotification.swift */; };
-		68EA4C76E1CF108902886962 /* _TWAPIRequestUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D35830A45C81BCF8264F6 /* _TWAPIRequestUpload.swift */; };
-		6A80C396439A2108BA9679D8 /* TWComplaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA722F61D2E1C84FCECBFDA /* TWComplaint.swift */; };
-		6B49A6A09E0EC7D90C44210A /* ENTWCaseQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F8922AFF76AA6A0DC6C08F /* ENTWCaseQueue.swift */; };
-		6D6ED83A15E9039A4361ED85 /* TWAPIRequestLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004F278AB7DDE2142DF95063 /* TWAPIRequestLocation.swift */; };
-		6ED801E4983FC17E852DE630 /* TWCMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1822B3A8FC0D94292B2A26 /* TWCMessageText.swift */; };
-		700420DE882C1491838AE89A /* TWUserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DC5600C18440AA1F94B61 /* TWUserCredential.swift */; };
-		752CE3A51BB0F28D45D43CC8 /* ENTWAPIRequestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B012BB1C09519339DEBB1 /* ENTWAPIRequestCase.swift */; };
-		7A6E3642F62855B36E4F543F /* _TWChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA40F42EFDC42AE558C9C96D /* _TWChatMessage.swift */; };
-		80DFD24C559550183587E0A9 /* _TWCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCE5FB0C414C756C23B9C4 /* _TWCase.swift */; };
-		8126E03C572D84B32680C5FE /* TWHospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4916C981C01CD2158A83A /* TWHospital.swift */; };
-		88D8E3732BD7D7B6B20EC712 /* _TWCMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D087E4100A7C4DD3AFDEBF /* _TWCMessageText.swift */; };
-		8D86F761D66C9F133919F873 /* TWCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBFD8B79E24F84A571C7727 /* TWCase.swift */; };
 		95C6991DF1E2D1E7DC3D2560 /* Pods_Abstract_TestCodegen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C0EAB9061070DD409F165C /* Pods_Abstract_TestCodegen.framework */; };
-		9765D1FA52F2E54E3E951234 /* TWTruck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B048B3754E6744D9EBFCFF /* TWTruck.swift */; };
-		98E9EC7D5B66834B38D467C3 /* ENTWChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D1B52CBDBC80771CE9D257 /* ENTWChatMessage.swift */; };
-		9D53419B1CE6D65864D89AF7 /* _TWAPIRequestTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF003844936E029381B71 /* _TWAPIRequestTag.swift */; };
 		A4CC1FE91EA9F8C0000A3A81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC1FE81EA9F8C0000A3A81 /* AppDelegate.swift */; };
 		A4CC1FEB1EA9F8C0000A3A81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC1FEA1EA9F8C0000A3A81 /* ViewController.swift */; };
 		A4CC1FEE1EA9F8C0000A3A81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CC1FEC1EA9F8C0000A3A81 /* Main.storyboard */; };
@@ -56,28 +15,6 @@
 		A4CC1FF31EA9F8C0000A3A81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CC1FF11EA9F8C0000A3A81 /* LaunchScreen.storyboard */; };
 		A4CC1FFE1EA9F8C0000A3A81 /* TestCodegenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC1FFD1EA9F8C0000A3A81 /* TestCodegenTests.swift */; };
 		A4CC20091EA9F8C0000A3A81 /* TestCodegenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC20081EA9F8C0000A3A81 /* TestCodegenUITests.swift */; };
-		A6377E5E1FC083DAE0D50912 /* TWTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A78977B16088CFA38EC5B8 /* TWTag.swift */; };
-		A6B2B49ACE83170D23BA556A /* _TWAPIRequestChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285BC90F82FB81DB7FC7322F /* _TWAPIRequestChat.swift */; };
-		AB6C8B28D08822304C8A61CA /* _TWTruck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287FEBD4FA8488E33C4E3A9 /* _TWTruck.swift */; };
-		AF2A5B9F99FF4E6A9D1C57E9 /* TWFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A96257A1B66EC1B77F7866 /* TWFile.swift */; };
-		B7AB127A64012CB6C132D964 /* ENTWObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF86883AC102D3EDC2458244 /* ENTWObject.swift */; };
-		B858B2484F3E78D2B6938D85 /* ENTWAPIRequestLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E9462D203EC3D1EA684759 /* ENTWAPIRequestLocation.swift */; };
-		B95184000C73274CED0AEDA4 /* ENTWAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61983367BF0AC21FF3B5E0B1 /* ENTWAPIRequest.swift */; };
-		B9BA3C71D70A27C2952647DC /* ENTWAPIRequestChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5089B8C8131902722766696C /* ENTWAPIRequestChat.swift */; };
-		BE54CE99DAB3744D5276934A /* _TWAPIRequestLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7709C0152AF82A221DD9B8 /* _TWAPIRequestLocation.swift */; };
-		BF91AA1CC99902C88F94DF9B /* ENTWAPIRequestUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619CB05B07B611609709948F /* ENTWAPIRequestUpload.swift */; };
-		C23003FCDCC0DBC0BB78698A /* _TWEMSAgency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024DEF19770E9C900C1846DE /* _TWEMSAgency.swift */; };
-		C2BF155E63E189D2EFC1AFD3 /* TWAPIRequestChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B29DC3993615CC6929F93 /* TWAPIRequestChat.swift */; };
-		CD841CE8BFAE3B5746C79763 /* ENTWCMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7E9B563D7BE23A112DBEA /* ENTWCMessageText.swift */; };
-		D37C0A36FAD892D95F1162EB /* _TWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721BA1C4D3D799EBA2A63F /* _TWUser.swift */; };
-		D57D3BBDB300E90F1437DF6E /* ENTWCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9283A9AD3174E792E656724 /* ENTWCase.swift */; };
-		D7765157C80BF32B747CD5B3 /* ENTWAPIRequestTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13110E4F39C107B258A24D7B /* ENTWAPIRequestTag.swift */; };
-		E0E149C16D661E9CC80504BF /* TWCaseQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF707DB5023564510028599 /* TWCaseQueue.swift */; };
-		E50823DCE387F67D10FB480A /* ENTWComplaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C361297CDA8B1EE3DBD6C53 /* ENTWComplaint.swift */; };
-		E6FEF9F4FB4EA39B57C5B82A /* _TWSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F8B16AF4E29B54555680C /* _TWSession.swift */; };
-		E7E589CAEFE1D3BDBCCEB7D2 /* ENTWUserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2F819C5F7724A622FF486 /* ENTWUserCredential.swift */; };
-		E81BEBCAFF40E5EE88C6CA46 /* _TWObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C5F7EC9C72304D289A559 /* _TWObject.swift */; };
-		FB1850BA7CE3D073A60CC75B /* TWSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3C5F747240132BB8B5EFEC /* TWSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,45 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		004F278AB7DDE2142DF95063 /* TWAPIRequestLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestLocation.swift; sourceTree = "<group>"; };
-		024DEF19770E9C900C1846DE /* _TWEMSAgency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWEMSAgency.swift; sourceTree = "<group>"; };
-		0FCCADD6D78597D3D8005FAF /* _TWCaseQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWCaseQueue.swift; sourceTree = "<group>"; };
-		0FF707DB5023564510028599 /* TWCaseQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWCaseQueue.swift; sourceTree = "<group>"; };
-		13110E4F39C107B258A24D7B /* ENTWAPIRequestTag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWAPIRequestTag.swift; sourceTree = "<group>"; };
 		18C0EAB9061070DD409F165C /* Pods_Abstract_TestCodegen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Abstract_TestCodegen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D1B96896A9BDDB53F555F97 /* ENTWFile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWFile.swift; sourceTree = "<group>"; };
-		239AFBDE8645D5446D7342D3 /* TWUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWUser.swift; sourceTree = "<group>"; };
-		255D1075E5B6AAF3E1AED074 /* TWAPIRequestCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestCase.swift; sourceTree = "<group>"; };
-		25DCE5FB0C414C756C23B9C4 /* _TWCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWCase.swift; sourceTree = "<group>"; };
-		285BC90F82FB81DB7FC7322F /* _TWAPIRequestChat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWAPIRequestChat.swift; sourceTree = "<group>"; };
-		2B3CF003844936E029381B71 /* _TWAPIRequestTag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWAPIRequestTag.swift; sourceTree = "<group>"; };
-		2C361297CDA8B1EE3DBD6C53 /* ENTWComplaint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWComplaint.swift; sourceTree = "<group>"; };
-		2FA7E9B563D7BE23A112DBEA /* ENTWCMessageText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWCMessageText.swift; sourceTree = "<group>"; };
-		3B7709C0152AF82A221DD9B8 /* _TWAPIRequestLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWAPIRequestLocation.swift; sourceTree = "<group>"; };
-		3C1B012BB1C09519339DEBB1 /* ENTWAPIRequestCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWAPIRequestCase.swift; sourceTree = "<group>"; };
-		3E2165ED05AE8E400FEE5BFC /* _TWAPIRequestPushNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWAPIRequestPushNotification.swift; sourceTree = "<group>"; };
-		421A833ACFFD330D687961A8 /* TWAPIRequestUpload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestUpload.swift; sourceTree = "<group>"; };
-		4251E9EA0C51D16BA6A868EA /* _TWHospital.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWHospital.swift; sourceTree = "<group>"; };
-		43E9462D203EC3D1EA684759 /* ENTWAPIRequestLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWAPIRequestLocation.swift; sourceTree = "<group>"; };
-		46A78977B16088CFA38EC5B8 /* TWTag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWTag.swift; sourceTree = "<group>"; };
-		4D27956D4AA365ED833420C2 /* _TWTag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWTag.swift; sourceTree = "<group>"; };
-		5089B8C8131902722766696C /* ENTWAPIRequestChat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWAPIRequestChat.swift; sourceTree = "<group>"; };
-		5287FEBD4FA8488E33C4E3A9 /* _TWTruck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWTruck.swift; sourceTree = "<group>"; };
-		61983367BF0AC21FF3B5E0B1 /* ENTWAPIRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWAPIRequest.swift; sourceTree = "<group>"; };
-		619CB05B07B611609709948F /* ENTWAPIRequestUpload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWAPIRequestUpload.swift; sourceTree = "<group>"; };
-		694C62B03BB6D06241681028 /* TWEMSAgency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWEMSAgency.swift; sourceTree = "<group>"; };
-		6B1822B3A8FC0D94292B2A26 /* TWCMessageText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWCMessageText.swift; sourceTree = "<group>"; };
-		6B7B29DC3993615CC6929F93 /* TWAPIRequestChat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestChat.swift; sourceTree = "<group>"; };
 		6CDF6D69CD319E1F903A1A03 /* Pods-Abstract-TestCodegen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abstract-TestCodegen.release.xcconfig"; path = "Pods/Target Support Files/Pods-Abstract-TestCodegen/Pods-Abstract-TestCodegen.release.xcconfig"; sourceTree = "<group>"; };
-		6DBFD8B79E24F84A571C7727 /* TWCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWCase.swift; sourceTree = "<group>"; };
-		851FF7D291D73FA40A6202C7 /* ENTWEMSAgency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWEMSAgency.swift; sourceTree = "<group>"; };
-		87C3E11943A47EFA5E5D2FEE /* _TWComplaint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWComplaint.swift; sourceTree = "<group>"; };
-		8C85C7BF1FC3131E9FB696E4 /* TWAPIRequestTag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestTag.swift; sourceTree = "<group>"; };
-		9108D59F88DA28E14A06964E /* TWAPIRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequest.swift; sourceTree = "<group>"; };
-		93B048B3754E6744D9EBFCFF /* TWTruck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWTruck.swift; sourceTree = "<group>"; };
-		9FD34407EE1909B6226A7579 /* ENTWUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWUser.swift; sourceTree = "<group>"; };
-		A2F1EF989FAB23C2C6C4117D /* _TWFile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWFile.swift; sourceTree = "<group>"; };
-		A44C5F7EC9C72304D289A559 /* _TWObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWObject.swift; sourceTree = "<group>"; };
 		A4CC1FE51EA9F8C0000A3A81 /* TestCodegen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCodegen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CC1FE81EA9F8C0000A3A81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4CC1FEA1EA9F8C0000A3A81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,33 +50,7 @@
 		A4CC20041EA9F8C0000A3A81 /* TestCodegenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestCodegenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CC20081EA9F8C0000A3A81 /* TestCodegenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCodegenUITests.swift; sourceTree = "<group>"; };
 		A4CC200A1EA9F8C0000A3A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5BAC404E1F86EB859824C8F /* ENTWAPIRequestPushNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWAPIRequestPushNotification.swift; sourceTree = "<group>"; };
-		A9283A9AD3174E792E656724 /* ENTWCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWCase.swift; sourceTree = "<group>"; };
-		B0F250CEED8ACB952F26C5F8 /* _TWUserCredential.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWUserCredential.swift; sourceTree = "<group>"; };
-		B30DC5600C18440AA1F94B61 /* TWUserCredential.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWUserCredential.swift; sourceTree = "<group>"; };
-		B5BC382A5A3033EB9695D9FE /* ENTWSession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWSession.swift; sourceTree = "<group>"; };
-		B6D613A30727921DB3989F5E /* TWAPIRequestPushNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWAPIRequestPushNotification.swift; sourceTree = "<group>"; };
-		BA40F42EFDC42AE558C9C96D /* _TWChatMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWChatMessage.swift; sourceTree = "<group>"; };
-		BBA722F61D2E1C84FCECBFDA /* TWComplaint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWComplaint.swift; sourceTree = "<group>"; };
-		BC47F77A42D9988382D826AA /* TWChatMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWChatMessage.swift; sourceTree = "<group>"; };
-		BEC7D0C2219DC4BEB756306F /* _TWAPIRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWAPIRequest.swift; sourceTree = "<group>"; };
-		C625F39157A70B1419CF9744 /* ENTWHospital.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWHospital.swift; sourceTree = "<group>"; };
-		C7E5DF96635B76682F7A240A /* ENTWTag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWTag.swift; sourceTree = "<group>"; };
-		CEC4916C981C01CD2158A83A /* TWHospital.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWHospital.swift; sourceTree = "<group>"; };
-		CF86883AC102D3EDC2458244 /* ENTWObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWObject.swift; sourceTree = "<group>"; };
-		D13BA632E580EF1EB21D27FF /* ENTWTruck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWTruck.swift; sourceTree = "<group>"; };
-		D6D087E4100A7C4DD3AFDEBF /* _TWCMessageText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWCMessageText.swift; sourceTree = "<group>"; };
-		DF6F8B16AF4E29B54555680C /* _TWSession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWSession.swift; sourceTree = "<group>"; };
-		E04EC74A6000127C5E225286 /* _TWAPIRequestCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWAPIRequestCase.swift; sourceTree = "<group>"; };
-		E1721BA1C4D3D799EBA2A63F /* _TWUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWUser.swift; sourceTree = "<group>"; };
-		E1A96257A1B66EC1B77F7866 /* TWFile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWFile.swift; sourceTree = "<group>"; };
-		E1F8922AFF76AA6A0DC6C08F /* ENTWCaseQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWCaseQueue.swift; sourceTree = "<group>"; };
-		E2F2F819C5F7724A622FF486 /* ENTWUserCredential.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWUserCredential.swift; sourceTree = "<group>"; };
-		E3D1B52CBDBC80771CE9D257 /* ENTWChatMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ENTWChatMessage.swift; sourceTree = "<group>"; };
-		E4B8E6BF2D7ED5A39D10A8F9 /* TWObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWObject.swift; sourceTree = "<group>"; };
 		F37A4C9941E8B08F3A66498E /* Pods-Abstract-TestCodegen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abstract-TestCodegen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Abstract-TestCodegen/Pods-Abstract-TestCodegen.debug.xcconfig"; sourceTree = "<group>"; };
-		FF2D35830A45C81BCF8264F6 /* _TWAPIRequestUpload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = _TWAPIRequestUpload.swift; sourceTree = "<group>"; };
-		FF3C5F747240132BB8B5EFEC /* TWSession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TWSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,17 +79,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		211ECEA6D142285D95415A2E /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				898F715973467DEFC93B6D83 /* Machine */,
-				3E8351D0B84C8EA913D8580E /* Human */,
-				A5E90BAAF8AB36C69CF810CA /* Models */,
-			);
-			name = Entities;
-			path = .;
-			sourceTree = "<group>";
-		};
 		3AA412D308AE918AC76E8832 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,70 +88,12 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		3E8351D0B84C8EA913D8580E /* Human */ = {
-			isa = PBXGroup;
-			children = (
-				9108D59F88DA28E14A06964E /* TWAPIRequest.swift */,
-				255D1075E5B6AAF3E1AED074 /* TWAPIRequestCase.swift */,
-				6B7B29DC3993615CC6929F93 /* TWAPIRequestChat.swift */,
-				004F278AB7DDE2142DF95063 /* TWAPIRequestLocation.swift */,
-				B6D613A30727921DB3989F5E /* TWAPIRequestPushNotification.swift */,
-				8C85C7BF1FC3131E9FB696E4 /* TWAPIRequestTag.swift */,
-				421A833ACFFD330D687961A8 /* TWAPIRequestUpload.swift */,
-				6DBFD8B79E24F84A571C7727 /* TWCase.swift */,
-				0FF707DB5023564510028599 /* TWCaseQueue.swift */,
-				BC47F77A42D9988382D826AA /* TWChatMessage.swift */,
-				6B1822B3A8FC0D94292B2A26 /* TWCMessageText.swift */,
-				BBA722F61D2E1C84FCECBFDA /* TWComplaint.swift */,
-				694C62B03BB6D06241681028 /* TWEMSAgency.swift */,
-				E1A96257A1B66EC1B77F7866 /* TWFile.swift */,
-				CEC4916C981C01CD2158A83A /* TWHospital.swift */,
-				E4B8E6BF2D7ED5A39D10A8F9 /* TWObject.swift */,
-				FF3C5F747240132BB8B5EFEC /* TWSession.swift */,
-				46A78977B16088CFA38EC5B8 /* TWTag.swift */,
-				93B048B3754E6744D9EBFCFF /* TWTruck.swift */,
-				239AFBDE8645D5446D7342D3 /* TWUser.swift */,
-				B30DC5600C18440AA1F94B61 /* TWUserCredential.swift */,
-			);
-			name = Human;
-			path = .;
-			sourceTree = "<group>";
-		};
 		7B47CEFCF5B97FAC126471C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				18C0EAB9061070DD409F165C /* Pods_Abstract_TestCodegen.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		898F715973467DEFC93B6D83 /* Machine */ = {
-			isa = PBXGroup;
-			children = (
-				BEC7D0C2219DC4BEB756306F /* _TWAPIRequest.swift */,
-				E04EC74A6000127C5E225286 /* _TWAPIRequestCase.swift */,
-				285BC90F82FB81DB7FC7322F /* _TWAPIRequestChat.swift */,
-				3B7709C0152AF82A221DD9B8 /* _TWAPIRequestLocation.swift */,
-				3E2165ED05AE8E400FEE5BFC /* _TWAPIRequestPushNotification.swift */,
-				2B3CF003844936E029381B71 /* _TWAPIRequestTag.swift */,
-				FF2D35830A45C81BCF8264F6 /* _TWAPIRequestUpload.swift */,
-				25DCE5FB0C414C756C23B9C4 /* _TWCase.swift */,
-				0FCCADD6D78597D3D8005FAF /* _TWCaseQueue.swift */,
-				BA40F42EFDC42AE558C9C96D /* _TWChatMessage.swift */,
-				D6D087E4100A7C4DD3AFDEBF /* _TWCMessageText.swift */,
-				87C3E11943A47EFA5E5D2FEE /* _TWComplaint.swift */,
-				024DEF19770E9C900C1846DE /* _TWEMSAgency.swift */,
-				A2F1EF989FAB23C2C6C4117D /* _TWFile.swift */,
-				4251E9EA0C51D16BA6A868EA /* _TWHospital.swift */,
-				A44C5F7EC9C72304D289A559 /* _TWObject.swift */,
-				DF6F8B16AF4E29B54555680C /* _TWSession.swift */,
-				4D27956D4AA365ED833420C2 /* _TWTag.swift */,
-				5287FEBD4FA8488E33C4E3A9 /* _TWTruck.swift */,
-				E1721BA1C4D3D799EBA2A63F /* _TWUser.swift */,
-				B0F250CEED8ACB952F26C5F8 /* _TWUserCredential.swift */,
-			);
-			name = Machine;
-			path = .;
 			sourceTree = "<group>";
 		};
 		A4CC1FDC1EA9F8C0000A3A81 = {
@@ -300,7 +105,6 @@
 				A4CC1FE61EA9F8C0000A3A81 /* Products */,
 				3AA412D308AE918AC76E8832 /* Pods */,
 				7B47CEFCF5B97FAC126471C3 /* Frameworks */,
-				DCDAB16442FB7BCA08B1117C /* Business Logic */,
 			);
 			sourceTree = "<group>";
 		};
@@ -343,44 +147,6 @@
 				A4CC200A1EA9F8C0000A3A81 /* Info.plist */,
 			);
 			path = TestCodegenUITests;
-			sourceTree = "<group>";
-		};
-		A5E90BAAF8AB36C69CF810CA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				61983367BF0AC21FF3B5E0B1 /* ENTWAPIRequest.swift */,
-				3C1B012BB1C09519339DEBB1 /* ENTWAPIRequestCase.swift */,
-				5089B8C8131902722766696C /* ENTWAPIRequestChat.swift */,
-				43E9462D203EC3D1EA684759 /* ENTWAPIRequestLocation.swift */,
-				A5BAC404E1F86EB859824C8F /* ENTWAPIRequestPushNotification.swift */,
-				13110E4F39C107B258A24D7B /* ENTWAPIRequestTag.swift */,
-				619CB05B07B611609709948F /* ENTWAPIRequestUpload.swift */,
-				A9283A9AD3174E792E656724 /* ENTWCase.swift */,
-				E1F8922AFF76AA6A0DC6C08F /* ENTWCaseQueue.swift */,
-				E3D1B52CBDBC80771CE9D257 /* ENTWChatMessage.swift */,
-				2FA7E9B563D7BE23A112DBEA /* ENTWCMessageText.swift */,
-				2C361297CDA8B1EE3DBD6C53 /* ENTWComplaint.swift */,
-				851FF7D291D73FA40A6202C7 /* ENTWEMSAgency.swift */,
-				1D1B96896A9BDDB53F555F97 /* ENTWFile.swift */,
-				C625F39157A70B1419CF9744 /* ENTWHospital.swift */,
-				CF86883AC102D3EDC2458244 /* ENTWObject.swift */,
-				B5BC382A5A3033EB9695D9FE /* ENTWSession.swift */,
-				C7E5DF96635B76682F7A240A /* ENTWTag.swift */,
-				D13BA632E580EF1EB21D27FF /* ENTWTruck.swift */,
-				9FD34407EE1909B6226A7579 /* ENTWUser.swift */,
-				E2F2F819C5F7724A622FF486 /* ENTWUserCredential.swift */,
-			);
-			name = Models;
-			path = .;
-			sourceTree = "<group>";
-		};
-		DCDAB16442FB7BCA08B1117C /* Business Logic */ = {
-			isa = PBXGroup;
-			children = (
-				211ECEA6D142285D95415A2E /* Entities */,
-			);
-			name = "Business Logic";
-			path = TestCodegen/Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -571,69 +337,6 @@
 			files = (
 				A4CC1FEB1EA9F8C0000A3A81 /* ViewController.swift in Sources */,
 				A4CC1FE91EA9F8C0000A3A81 /* AppDelegate.swift in Sources */,
-				06BF2BED363CA0A218C3B319 /* _TWAPIRequest.swift in Sources */,
-				19690203372609B1CA4D5E22 /* TWAPIRequest.swift in Sources */,
-				B95184000C73274CED0AEDA4 /* ENTWAPIRequest.swift in Sources */,
-				3976AAC55626BCFAEEC0681B /* _TWAPIRequestCase.swift in Sources */,
-				0A2E0BF9C7C56A6952A576ED /* TWAPIRequestCase.swift in Sources */,
-				752CE3A51BB0F28D45D43CC8 /* ENTWAPIRequestCase.swift in Sources */,
-				A6B2B49ACE83170D23BA556A /* _TWAPIRequestChat.swift in Sources */,
-				C2BF155E63E189D2EFC1AFD3 /* TWAPIRequestChat.swift in Sources */,
-				B9BA3C71D70A27C2952647DC /* ENTWAPIRequestChat.swift in Sources */,
-				BE54CE99DAB3744D5276934A /* _TWAPIRequestLocation.swift in Sources */,
-				6D6ED83A15E9039A4361ED85 /* TWAPIRequestLocation.swift in Sources */,
-				B858B2484F3E78D2B6938D85 /* ENTWAPIRequestLocation.swift in Sources */,
-				0D2AE19CD5B467404BD78FE7 /* _TWAPIRequestPushNotification.swift in Sources */,
-				4A15E17825B9313E2FC7BD24 /* TWAPIRequestPushNotification.swift in Sources */,
-				6887FEA1CF30009C21E3187A /* ENTWAPIRequestPushNotification.swift in Sources */,
-				9D53419B1CE6D65864D89AF7 /* _TWAPIRequestTag.swift in Sources */,
-				3B3A260C39A1B6FD7FBA2B22 /* TWAPIRequestTag.swift in Sources */,
-				D7765157C80BF32B747CD5B3 /* ENTWAPIRequestTag.swift in Sources */,
-				68EA4C76E1CF108902886962 /* _TWAPIRequestUpload.swift in Sources */,
-				0BBB7069780B80189E172376 /* TWAPIRequestUpload.swift in Sources */,
-				BF91AA1CC99902C88F94DF9B /* ENTWAPIRequestUpload.swift in Sources */,
-				80DFD24C559550183587E0A9 /* _TWCase.swift in Sources */,
-				8D86F761D66C9F133919F873 /* TWCase.swift in Sources */,
-				D57D3BBDB300E90F1437DF6E /* ENTWCase.swift in Sources */,
-				4AF27F9D73A9752A6860F3F6 /* _TWCaseQueue.swift in Sources */,
-				E0E149C16D661E9CC80504BF /* TWCaseQueue.swift in Sources */,
-				6B49A6A09E0EC7D90C44210A /* ENTWCaseQueue.swift in Sources */,
-				7A6E3642F62855B36E4F543F /* _TWChatMessage.swift in Sources */,
-				16ACBD0B94439DEB914759E4 /* TWChatMessage.swift in Sources */,
-				98E9EC7D5B66834B38D467C3 /* ENTWChatMessage.swift in Sources */,
-				88D8E3732BD7D7B6B20EC712 /* _TWCMessageText.swift in Sources */,
-				6ED801E4983FC17E852DE630 /* TWCMessageText.swift in Sources */,
-				CD841CE8BFAE3B5746C79763 /* ENTWCMessageText.swift in Sources */,
-				02A639A2A3D2FA019BD374C9 /* _TWComplaint.swift in Sources */,
-				6A80C396439A2108BA9679D8 /* TWComplaint.swift in Sources */,
-				E50823DCE387F67D10FB480A /* ENTWComplaint.swift in Sources */,
-				C23003FCDCC0DBC0BB78698A /* _TWEMSAgency.swift in Sources */,
-				40D8C223B1B81A5AC70C85F5 /* TWEMSAgency.swift in Sources */,
-				1A51BA30BF3D9CA405118AC1 /* ENTWEMSAgency.swift in Sources */,
-				4E4F448C25B5D3A3AADCD16E /* _TWFile.swift in Sources */,
-				AF2A5B9F99FF4E6A9D1C57E9 /* TWFile.swift in Sources */,
-				1CD6A6CDA9EB6A48C9C8DD10 /* ENTWFile.swift in Sources */,
-				25F60FAD2FD649DB81128D02 /* _TWHospital.swift in Sources */,
-				8126E03C572D84B32680C5FE /* TWHospital.swift in Sources */,
-				5675DABB8E9DE16D0B724F8A /* ENTWHospital.swift in Sources */,
-				E81BEBCAFF40E5EE88C6CA46 /* _TWObject.swift in Sources */,
-				36145E8508B36261D1DD63BF /* TWObject.swift in Sources */,
-				B7AB127A64012CB6C132D964 /* ENTWObject.swift in Sources */,
-				E6FEF9F4FB4EA39B57C5B82A /* _TWSession.swift in Sources */,
-				FB1850BA7CE3D073A60CC75B /* TWSession.swift in Sources */,
-				64F276813449775B507EC63F /* ENTWSession.swift in Sources */,
-				20F2C027FA8CD1CC44DE9A06 /* _TWTag.swift in Sources */,
-				A6377E5E1FC083DAE0D50912 /* TWTag.swift in Sources */,
-				03F369E81CC8EABF50C656CE /* ENTWTag.swift in Sources */,
-				AB6C8B28D08822304C8A61CA /* _TWTruck.swift in Sources */,
-				9765D1FA52F2E54E3E951234 /* TWTruck.swift in Sources */,
-				3D20A0C942F74C676DBCC1FA /* ENTWTruck.swift in Sources */,
-				D37C0A36FAD892D95F1162EB /* _TWUser.swift in Sources */,
-				10EBA02C3203493C85B8936C /* TWUser.swift in Sources */,
-				207CCAD76A9621F3814A3DCC /* ENTWUser.swift in Sources */,
-				06D4056CD4E8653DB3490D66 /* _TWUserCredential.swift in Sources */,
-				700420DE882C1491838AE89A /* TWUserCredential.swift in Sources */,
-				E7E589CAEFE1D3BDBCCEB7D2 /* ENTWUserCredential.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

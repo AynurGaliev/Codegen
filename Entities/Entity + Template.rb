@@ -183,104 +183,50 @@ class EntityTemplate
 			result += "\t#{temp_string}\n"
 		end
 
-		# one_to_one_relationships = entity.relationships.select { |r| r.toMany == "NO" }
-		# one_to_many_relationships = entity.relationships.select { |r| r.toMany == "YES" }
+		result += "\n"
 
 		entities = entities.sort { |x, y| x.name <=> y.name }
 
 		if entity.relationships.length != 0
 
-			result += "\n\t//MARK: - Relationships\n"
+			one_to_one_relationships_mark = ""
+			one_to_many_relationships_mark = ""
 
 			entity.relationships.each do |rel|
 				
 				search_entity = entities.find { |e| e.name == rel.destinationEntity }
 				relationship_inversed = search_entity.relationships.find { |rel| rel.destinationEntity == entity.name }
-				#result += "//#{relationship_inversed.name}"
 
 				if rel.toMany == "NO" && relationship_inversed.toMany == "NO"
 					if entity.name > search_entity.name
-						result += "\tdynamic var #{rel.name}: EN#{rel.destinationEntity}?\n"
+						one_to_one_relationships_mark += "\tdynamic var #{rel.name}: EN#{rel.destinationEntity}?\n"
 					else
-						result += "\tlet #{rel.name} = LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: \"#{relationship_inversed.name}\")\n"
-						result += "\tvar #{rel.name[0...-1]}: EN#{rel.destinationEntity}? {\n\t\treturn self.#{rel.name}.first\n\t}\n"
+						one_to_one_relationships_mark += "\tprivate let #{rel.name}s = LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: \"#{relationship_inversed.name}\")\n"
+						one_to_one_relationships_mark += "\tvar #{rel.name}: EN#{rel.destinationEntity}? {\n\t\treturn self.#{rel.name}s.first\n\t}\n"
 					end
 				elsif rel.toMany == "YES" && relationship_inversed.toMany == "NO"
-					result += "\tlet #{rel.name} = List<EN#{rel.destinationEntity}>()\n"
+					one_to_many_relationships_mark += "\tlet #{rel.name} = LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: \"#{relationship_inversed.name}\")\n"
 				elsif rel.toMany == "NO" && relationship_inversed.toMany == "YES"
-					result += "\tlet #{rel.name} =  LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: \"#{relationship_inversed.name}\")\n"
-					result += "\tvar #{rel.name[0...-1]}: EN#{rel.destinationEntity}? {\n\t\treturn self.#{rel.name}.first\n\t}\n"
+					one_to_one_relationships_mark += "\tdynamic var #{rel.name}: EN#{rel.destinationEntity}?\n"
 				elsif rel.toMany == "YES" && relationship_inversed.toMany == "YES"
-					result += "\tlet #{rel.name} =  LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: \"#{relationship_inversed.name}\")\n"
+					one_to_many_relationships_mark += "\tlet #{rel.name} =  LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: \"#{relationship_inversed.name}\")\n"
 				end
+			end
 
-				# if relationship_inversed.toMany == "YES"
-				# 	result += "\tlet #{rel.name} = LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: #keyPath(EN#{search_entity.name}.#{relationship_inversed.name}))\n"
-				# else
-				# 	if relationship_inversed.toMany == "YES" && 
-				# 	if entity.name > search_entity.name
-				# 		result += "\tdynamic var #{rel.name}: EN#{rel.destinationEntity}?\n"
-				# 	else 
-				# 		result += "\tlet #{rel.name} = LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: #keyPath(EN#{search_entity.name}.#{relationship_inversed.name}))\n"
-				# 		result += "\tvar #{relationship_inversed.name.chomp}: #{search_entity.name} {\n\treturn self.#{rel.name}.first?\n}\n"
-				# 	end
-				# end
+			if one_to_one_relationships_mark != ""
+				result += "\t//MARK: - One-to-one relationships\n"
+				result += "#{one_to_one_relationships_mark}\n"
+			end
+
+			if one_to_many_relationships_mark != ""
+				result += "\t//MARK: - One-to-many relationships\n"
+				result += "#{one_to_many_relationships_mark}\n"
 			end
 		end
 
-		# if one_to_many_relationships.length != 0
-
-		# 	result += "\n\t//MARK: - One-to-many relationships\n"
-
-		# 	one_to_many_relationships.each do |rel|
-		# 		result += "\tlet #{rel.name} = List<EN#{rel.destinationEntity}>()\n"
-		# 	end
-		# end
-
-		# entity.relationships.each do |rel|
-		# 	constructor_string.push("\t\tself.#{rel.name} = #{rel.name}") 
-		# 	relationship_string = ""
-		# 	if rel.toMany == "YES"
-		# 		relationship_string = "[#{rel.destinationEntity}]"
-		# 	else
-		# 		relationship_string = "#{rel.destinationEntity}"
-		# 	end
-		# 	if rel.is_optional == "YES"
-		# 		relationship_string += "?"
-		# 	end
-		# 	temp_string = "#{rel.name}: #{relationship_string}"
-		# 	result += "\tlet #{temp_string}\n"
-		# 	init_string.push(temp_string) 
-		# end
-
-		result += "\n}\n"
+		result += "}\n"
 		return result
 	end	
-
-# 	import RealmSwift
-
-# final class ENCase: Object {
-    
-#     static override func primaryKey() -> String {
-#         return #keyPath(ENCase.id)
-#     }
-    
-#     //MARK: - Attributes
-#     dynamic var id         : String = String.empty
-#     dynamic var caseNumber : Int = 0
-#     dynamic var beganAt    : Date?
-    
-#     //MARK: - Relationships
-#     dynamic var complaint    : ENComplaint?
-#     dynamic var destinationHospital: ENHospital?
-#     dynamic var emsAgency    : ENAgency?
-#     dynamic var user         : ENUser?
-#     dynamic var truck        : ENTruck?
-#     dynamic var lastLocation : ENLocation?
-#     let uploads   = List<ENUpload>()
-#     let messages  = LinkingObjects(fromType: ENMessage.self, property: #keyPath(ENMessage.twCase))
-    
-# }
 
 	#Helpers
 

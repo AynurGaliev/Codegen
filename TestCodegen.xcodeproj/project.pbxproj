@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		95C6991DF1E2D1E7DC3D2560 /* Pods_Abstract_TestCodegen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C0EAB9061070DD409F165C /* Pods_Abstract_TestCodegen.framework */; };
+		A4961C8E1EAF65E8001A8E5A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4961C8D1EAF65E8001A8E5A /* Helpers.swift */; };
 		A4CC1FE91EA9F8C0000A3A81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC1FE81EA9F8C0000A3A81 /* AppDelegate.swift */; };
 		A4CC1FEB1EA9F8C0000A3A81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC1FEA1EA9F8C0000A3A81 /* ViewController.swift */; };
 		A4CC1FEE1EA9F8C0000A3A81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CC1FEC1EA9F8C0000A3A81 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		18C0EAB9061070DD409F165C /* Pods_Abstract_TestCodegen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Abstract_TestCodegen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CDF6D69CD319E1F903A1A03 /* Pods-Abstract-TestCodegen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abstract-TestCodegen.release.xcconfig"; path = "Pods/Target Support Files/Pods-Abstract-TestCodegen/Pods-Abstract-TestCodegen.release.xcconfig"; sourceTree = "<group>"; };
+		A4961C8D1EAF65E8001A8E5A /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		A4CC1FE51EA9F8C0000A3A81 /* TestCodegen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCodegen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CC1FE81EA9F8C0000A3A81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4CC1FEA1EA9F8C0000A3A81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A4961C8C1EAF65DA001A8E5A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A4961C8D1EAF65E8001A8E5A /* Helpers.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		A4CC1FDC1EA9F8C0000A3A81 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 		A4CC1FE71EA9F8C0000A3A81 /* TestCodegen */ = {
 			isa = PBXGroup;
 			children = (
+				A4961C8C1EAF65DA001A8E5A /* Helpers */,
 				A4CC1FE81EA9F8C0000A3A81 /* AppDelegate.swift */,
 				A4CC1FEA1EA9F8C0000A3A81 /* ViewController.swift */,
 				A4CC1FEC1EA9F8C0000A3A81 /* Main.storyboard */,
@@ -337,6 +348,7 @@
 			files = (
 				A4CC1FEB1EA9F8C0000A3A81 /* ViewController.swift in Sources */,
 				A4CC1FE91EA9F8C0000A3A81 /* AppDelegate.swift in Sources */,
+				A4961C8E1EAF65E8001A8E5A /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

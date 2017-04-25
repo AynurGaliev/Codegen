@@ -10,6 +10,9 @@ require 'liquid'
 require './XcodeprojHelper.rb'
 require './ModelReader.rb'
 require './Entities/HeaderTemplate.rb'
+require './Transport/Transport + Template.rb'
+require './Services/Service + Template.rb'
+require './Parsers/Parser + Template.rb'
 
 data_model_path = ARGV[0]
 
@@ -28,41 +31,44 @@ project_name = project_paths.first.split("/").last.split(".").first
 entities = ModelReader::readEntities(data_model_path)
 
 bisness_logic_group = XcodeprojHelper::addGroup(project_name, project, "Business Logic")
-entities_group = XcodeprojHelper::addGroup(project_name, project, "Entities", bisness_logic_group)
-machine_entities_group = XcodeprojHelper::addGroup(project_name, project, "Machine", entities_group)
-human_entities_group = XcodeprojHelper::addGroup(project_name, project, "Human", entities_group)
-model_entities_group = XcodeprojHelper::addGroup(project_name, project, "Models", entities_group)
+
+transport_group = XcodeprojHelper::addGroup(project_name, project, "Transport layer", bisness_logic_group)
+entities_group = XcodeprojHelper::addGroup(project_name, project, "Data layer", bisness_logic_group)
+service_group = XcodeprojHelper::addGroup(project_name, project, "Service layer", bisness_logic_group)
+parser_group = XcodeprojHelper::addGroup(project_name, project, "Parsers layer", bisness_logic_group)
+
+poso_group = XcodeprojHelper::addGroup(project_name, project, "POSO", entities_group)
+machine_entities_group = XcodeprojHelper::addGroup(project_name, project, "Machine", poso_group)
+human_entities_group = XcodeprojHelper::addGroup(project_name, project, "Human", poso_group)
+model_entities_group = XcodeprojHelper::addGroup(project_name, project, "Database models", entities_group)
 
 entities.each do |entity|
-
-
-	# properties_array = Array.new
-	# entity.attributes.each do |attribute|
-	# 	properties = Hash.new
-	# 	attribute.instance_variables.each {|x| properties[x[1..-1]] = attribute.instance_variable_get(x) }
-	# 	properties_array.push(properties)
-	# end
-
-	# rel_array = Array.new
-	# entity.relationships.each do |relationship|
-	# 	rel = Hash.new
-	# 	relationship.instance_variables.each {|x| rel[x[1..-1]] = relationship.instance_variable_get(x) }
-	# 	rel_array.push(rel)
-	# end
 
 	machine_file_name = "_#{entity.name}.swift"
 	human_file_name = "#{entity.name}.swift"
 	model_file_name = "EN#{entity.name}.swift"
+	transport_file_name = "#{entity.name}Transport.swift"
+	service_file_name = "#{entity.name}Service.swift"
+	parser_file_name = "#{entity.name}Parser.swift"
 
 	machine_header = HeaderTemplate::generateHeader(project_name, machine_file_name)
 	human_header = HeaderTemplate::generateHeader(project_name, human_file_name)
 	model_header = HeaderTemplate::generateHeader(project_name, model_file_name)
+	transport_header = HeaderTemplate::generateHeader(project_name, transport_file_name)
+	service_header = HeaderTemplate::generateHeader(project_name, service_file_name)
+	parser_header = HeaderTemplate::generateHeader(project_name, parser_file_name)
 
 	human_content =  EntityTemplate::generateHumanTemplate(entity, human_header, entities)
 	machine_content = EntityTemplate::generateMachineTemplate(entity, machine_header, entities)
 	model_content = EntityTemplate::generateModel(entity, model_header, entities)
+	transport_content = TransportTemplate::generateTransportTemplate(entity, transport_header)
+	service_content = ServiceTemplate::generateServiceTemplate(entity, service_header)
+	parser_content = ParserTemplate::generateParserTemplate(entity, parser_header)
 
 	XcodeprojHelper::add_file(machine_file_name, machine_content, machine_entities_group, project_name, project)
 	XcodeprojHelper::add_file(human_file_name, human_content, human_entities_group, project_name, project)
 	XcodeprojHelper::add_file(model_file_name, model_content, model_entities_group, project_name, project)
+	XcodeprojHelper::add_file(transport_file_name, transport_content, transport_group, project_name, project)
+	XcodeprojHelper::add_file(service_file_name, service_content, service_group, project_name, project)
+	XcodeprojHelper::add_file(parser_file_name, parser_content, parser_group, project_name, project)
 end

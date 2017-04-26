@@ -7,7 +7,8 @@ class ParserTemplate
 		result += header
 		
 		result += "protocol I#{entity.name}Parser: class {\n"
-		result += "\tfunc serialize(json: Dictionary<String, Any?>?) throws -> EN#{entity.name}?\n"
+		result += "\tfunc serialize(json: Dictionary<String, Any?>) throws -> EN#{entity.name}\n"
+		result += "\tfunc serialize(jsonArray: [Dictionary<String, Any?>]) throws -> [EN#{entity.name}]\n"
 		entity_names = entity.relationships.map { |r| r.destinationEntity }.uniq
 		entity_names.each do |r|
 			result += "\tvar #{r.lowercase_first}Parser: I#{r.upcase_first}Parser! { get set }\n"
@@ -19,17 +20,16 @@ class ParserTemplate
 			result += "\tvar #{r.lowercase_first}Parser: I#{r.upcase_first}Parser!\n"
 		end
 		result += "\n"
-		result += "\tfunc serialize(json: Dictionary<String, Any?>?) throws -> EN#{entity.name}? {\n"
-		result += "\n\t\tguard let JSON = json else { return nil }\n\n"
+		result += "\tfunc serialize(json: Dictionary<String, Any?>) throws -> EN#{entity.name} {\n\n"
 		result += "\t\tlet en#{entity.name}: EN#{entity.name} = EN#{entity.name}()\n"
 		if entity.attributes.length != 0 
 			result += "\n\t\t//MARK: - Parsing attributes\n"
 		end
 		entity.attributes.each do |attr|
 			if (attr.is_optional == "YES") && (attr.type == "Int" || attr.type == "Float" || attr.type == "Double" || attr.type == "Bool" || attr.type == "Int8" || attr.type == "Int16"|| attr.type == "Int32" || attr.type == "Int64")   
-				result += "\t\ten#{entity.name}.#{attr.name}.value = try JSON.value(by: \"#{attr.name}\")\n"
+				result += "\t\ten#{entity.name}.#{attr.name}.value = try json.value(by: \"#{attr.name}\")\n"
 			else
-				result += "\t\ten#{entity.name}.#{attr.name} = try JSON.value(by: \"#{attr.name}\")\n"
+				result += "\t\ten#{entity.name}.#{attr.name} = try json.value(by: \"#{attr.name}\")\n"
 			end
 		end
 
@@ -37,7 +37,7 @@ class ParserTemplate
 		one_to_many_relationships_mark = ""
 		entity.relationships.each do |r|
 			if r.toMany == "NO"
-				one_to_one_relationships_mark += "\t\ten#{entity.name}.#{r.name} = try self.#{r.destinationEntity.lowercase_first}Parser.serialize(json: JSON.value(by: \"#{r.name}\"))\n"
+				one_to_one_relationships_mark += "\t\ten#{entity.name}.#{r.name} = try self.#{r.destinationEntity.lowercase_first}Parser.serialize(json: json.value(by: \"#{r.name}\"))\n"
 			end
 		end
 		if one_to_one_relationships_mark != ""
@@ -48,8 +48,19 @@ class ParserTemplate
 			result += "\n\t\t//MARK: - One-to-many relationships parsing\n"
 			result += one_to_many_relationships_mark
 		end
-		result += "\n\t\treturn en#{entity.name}\n}\n"
-		result += "}\n"
+		result += "\n\t\treturn en#{entity.name}\n"
+		result += "\t}\n\n"
+
+		result += "\tfunc serialize(jsonArray: [Dictionary<String, Any?>]) throws -> [EN#{entity.name}] {\n"
+		result += "\t\tguard jsonArray.count > 0 else { return [] }\n"
+		result += "\t\tvar en#{entity.name}s: [EN#{entity.name}] = []\n"
+		result += "\t\tfor json in jsonArray {\n"
+		result += "\t\t\tlet en#{entity.name}: EN#{entity.name} = try self.serialize(json: json)\n"
+		result += "\t\t\ten#{entity.name}s.append(en#{entity.name})\n"
+		result += "\t\t}\n"
+		result += "\t\treturn en#{entity.name}s\n"
+		result += "\t}\n"
+		result += "\n}"
 		return result
 	end
 

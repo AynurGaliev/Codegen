@@ -2,7 +2,7 @@
 // _Hospital.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -11,14 +11,14 @@ import Foundation
 class _Hospital: _Object {
 
 	let id: String
-	let location: CLLocation?
+	let location: Data?
 	let name: String
 	let administrators: [User]?
 	let cases: [Case]?
 	let emsAgencies: [EMSAgency]?
 	let members: [User]?
 
-	init(administrators: [User]?, cases: [Case]?, createdAt: Date, emsAgencies: [EMSAgency]?, id: String, localUpdatedAt: Date, location: CLLocation?, members: [User]?, name: String, updatedAt: Date?) {
+	init(administrators: [User]?, cases: [Case]?, createdAt: Date, emsAgencies: [EMSAgency]?, id: String, localUpdatedAt: Date, location: Data?, members: [User]?, name: String, updatedAt: Date?) {
 		self.administrators = administrators
 		self.cases = cases
 		self.emsAgencies = emsAgencies

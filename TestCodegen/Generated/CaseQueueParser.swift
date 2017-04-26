@@ -2,7 +2,7 @@
 // CaseQueueParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -27,6 +27,10 @@ final class CaseQueueParser: ICaseQueueParser {
 
 		//MARK: - One-to-one relationships parsing
 		enCaseQueue.queueCase = try self.caseParser.serialize(json: json.value(by: "queueCase"))
+
+		//MARK: - One-to-many relationships parsing
+		let _requests = try self.aPIRequestParser.serialize(jsonArray: json.value(by: "requests"))
+		_requests.forEach { enCaseQueue.requests.append($0) }
 
 		return enCaseQueue
 	}

@@ -15,7 +15,7 @@ class Type
 		when "Transformable" then 'Any'
 		when "String"        then 'String'
 		when "Binary"		 then 'Data'
-		else 'Any'
+		else 'Data'
 		end
 		
 		result_type

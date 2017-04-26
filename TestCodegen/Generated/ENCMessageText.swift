@@ -2,7 +2,7 @@
 // ENCMessageText.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -16,6 +16,6 @@ final class ENCMessageText: ENChatMessage {
 	dynamic var content: String = ""
 
 	//MARK: - One-to-many relationships
-	let pushNotifications = LinkingObjects(fromType: ENAPIRequestPushNotification.self, property: "message")
+	let pushNotifications = List<ENAPIRequestPushNotification>()
 
 }

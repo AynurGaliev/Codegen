@@ -2,7 +2,7 @@
 // TagParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -31,6 +31,12 @@ final class TagParser: ITagParser {
 		enTag.isSelected = try json.value(by: "isSelected")
 		enTag.name = try json.value(by: "name")
 		enTag.typeIdentifier = try json.value(by: "typeIdentifier")
+
+		//MARK: - Many-to-many relationships parsing
+		let _cases = try self.caseParser.serialize(jsonArray: json.value(by: "cases"))
+		_cases.forEach { enTag.cases.append($0) }
+		let _complaints = try self.complaintParser.serialize(jsonArray: json.value(by: "complaints"))
+		_complaints.forEach { enTag.complaints.append($0) }
 
 		return enTag
 	}

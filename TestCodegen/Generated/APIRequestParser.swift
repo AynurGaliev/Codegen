@@ -2,7 +2,7 @@
 // APIRequestParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -27,7 +27,8 @@ final class APIRequestParser: IAPIRequestParser {
 		enAPIRequest.isRequired = try json.value(by: "isRequired")
 
 		//MARK: - One-to-one relationships parsing
-		enAPIRequest.queue = try self.caseQueueParser.serialize(json: json.value(by: "queue"))
+		let _queue = try self.caseQueueParser.serialize(json: json.value(by: "queue"))
+		_queue.requests.append(enAPIRequest)
 
 		return enAPIRequest
 	}

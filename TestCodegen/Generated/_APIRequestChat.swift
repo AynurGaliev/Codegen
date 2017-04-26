@@ -2,7 +2,7 @@
 // _APIRequestChat.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -10,9 +10,9 @@ import Foundation
 
 class _APIRequestChat: _APIRequest {
 
-	let parameters: NSDictionary
+	let parameters: Data
 
-	init(isRequired: Bool, parameters: NSDictionary, queue: CaseQueue?) {
+	init(isRequired: Bool, parameters: Data, queue: CaseQueue?) {
 		self.parameters = parameters
 		super.init(isRequired: isRequired, queue: queue)
 	}

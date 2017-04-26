@@ -2,7 +2,7 @@
 // ENCaseQueue.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -17,6 +17,6 @@ final class ENCaseQueue: RealmSwift.Object {
 	dynamic var queueCase: ENCase?
 
 	//MARK: - One-to-many relationships
-	let requests = LinkingObjects(fromType: ENAPIRequest.self, property: "queue")
+	let requests = List<ENAPIRequest>()
 
 }

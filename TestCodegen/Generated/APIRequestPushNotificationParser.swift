@@ -2,7 +2,7 @@
 // APIRequestPushNotificationParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -24,7 +24,8 @@ final class APIRequestPushNotificationParser: IAPIRequestPushNotificationParser 
 		let enAPIRequestPushNotification: ENAPIRequestPushNotification = ENAPIRequestPushNotification()
 
 		//MARK: - One-to-one relationships parsing
-		enAPIRequestPushNotification.message = try self.cMessageTextParser.serialize(json: json.value(by: "message"))
+		let _message = try self.cMessageTextParser.serialize(json: json.value(by: "message"))
+		_message.pushNotifications.append(enAPIRequestPushNotification)
 
 		return enAPIRequestPushNotification
 	}

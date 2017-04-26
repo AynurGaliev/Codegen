@@ -2,7 +2,7 @@
 // EMSAgencyParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -38,7 +38,22 @@ final class EMSAgencyParser: IEMSAgencyParser {
 		enEMSAgency.name = try json.value(by: "name")
 
 		//MARK: - One-to-one relationships parsing
-		enEMSAgency.session = try self.sessionParser.serialize(json: json.value(by: "session"))
+		let _session = try self.sessionParser.serialize(json: json.value(by: "session"))
+		_session.emsAgency = enEMSAgency
+
+		//MARK: - One-to-many relationships parsing
+		let _cases = try self.caseParser.serialize(jsonArray: json.value(by: "cases"))
+		_cases.forEach { enEMSAgency.cases.append($0) }
+
+		//MARK: - Many-to-many relationships parsing
+		let _administrators = try self.userParser.serialize(jsonArray: json.value(by: "administrators"))
+		_administrators.forEach { $0.emsAgenciesAdministered.append(enEMSAgency) }
+		let _hospitals = try self.hospitalParser.serialize(jsonArray: json.value(by: "hospitals"))
+		_hospitals.forEach { $0.emsAgencies.append(enEMSAgency) }
+		let _members = try self.userParser.serialize(jsonArray: json.value(by: "members"))
+		_members.forEach { $0.emsAgenciesAdministered.append(enEMSAgency) }
+		let _trucks = try self.truckParser.serialize(jsonArray: json.value(by: "trucks"))
+		_trucks.forEach { $0.agencies.append(enEMSAgency) }
 
 		return enEMSAgency
 	}

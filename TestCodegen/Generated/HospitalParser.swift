@@ -2,7 +2,7 @@
 // HospitalParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -31,6 +31,18 @@ final class HospitalParser: IHospitalParser {
 		enHospital.id = try json.value(by: "id")
 		enHospital.location = try json.value(by: "location")
 		enHospital.name = try json.value(by: "name")
+
+		//MARK: - One-to-many relationships parsing
+		let _cases = try self.caseParser.serialize(jsonArray: json.value(by: "cases"))
+		_cases.forEach { enHospital.cases.append($0) }
+
+		//MARK: - Many-to-many relationships parsing
+		let _administrators = try self.userParser.serialize(jsonArray: json.value(by: "administrators"))
+		_administrators.forEach { $0.hospitalsAdministrated.append(enHospital) }
+		let _emsAgencies = try self.eMSAgencyParser.serialize(jsonArray: json.value(by: "emsAgencies"))
+		_emsAgencies.forEach { enHospital.emsAgencies.append($0) }
+		let _members = try self.userParser.serialize(jsonArray: json.value(by: "members"))
+		_members.forEach { $0.hospitalsAdministrated.append(enHospital) }
 
 		return enHospital
 	}

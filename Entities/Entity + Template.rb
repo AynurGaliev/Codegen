@@ -191,6 +191,7 @@ class EntityTemplate
 
 			one_to_one_relationships_mark = ""
 			one_to_many_relationships_mark = ""
+			many_to_many_relationships_mark = ""
 
 			entity.relationships.each do |rel|
 				
@@ -201,15 +202,28 @@ class EntityTemplate
 					if entity.name > search_entity.name
 						one_to_one_relationships_mark += "\tdynamic var #{rel.name}: EN#{rel.destinationEntity}?\n"
 					else
-						one_to_one_relationships_mark += "\tprivate let #{rel.name}s = LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: \"#{relationship_inversed.name}\")\n"
+						one_to_one_relationships_mark += "\tprivate let #{rel.name}s = LinkingObjects(fromType: EN#{search_entity.name}.self, property: \"#{relationship_inversed.name}\")\n"
 						one_to_one_relationships_mark += "\tvar #{rel.name}: EN#{rel.destinationEntity}? {\n\t\treturn self.#{rel.name}s.first\n\t}\n"
 					end
 				elsif rel.toMany == "YES" && relationship_inversed.toMany == "NO"
-					one_to_many_relationships_mark += "\tlet #{rel.name} = LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: \"#{relationship_inversed.name}\")\n"
+					if entity.name > search_entity.name
+						one_to_many_relationships_mark += "\tlet #{rel.name} = List<EN#{rel.destinationEntity}>()\n"
+					else
+						one_to_many_relationships_mark += "\tlet #{rel.name} =  LinkingObjects(fromType: EN#{search_entity.name}.self, property: \"#{relationship_inversed.name}\")\n"
+					end
 				elsif rel.toMany == "NO" && relationship_inversed.toMany == "YES"
-					one_to_one_relationships_mark += "\tdynamic var #{rel.name}: EN#{rel.destinationEntity}?\n"
+					if entity.name > search_entity.name
+						one_to_one_relationships_mark += "\tdynamic var #{rel.name}: EN#{rel.destinationEntity}?\n"
+					else
+						one_to_one_relationships_mark += "\tprivate let #{rel.name}s = LinkingObjects(fromType: EN#{search_entity.name}.self, property: \"#{relationship_inversed.name}\")\n"
+						one_to_one_relationships_mark += "\tvar #{rel.name}: EN#{rel.destinationEntity}? {\n\t\treturn self.#{rel.name}s.first\n\t}\n"	
+					end
 				elsif rel.toMany == "YES" && relationship_inversed.toMany == "YES"
-					one_to_many_relationships_mark += "\tlet #{rel.name} =  LinkingObjects(fromType: EN#{rel.destinationEntity}.self, property: \"#{relationship_inversed.name}\")\n"
+					if entity.name > search_entity.name
+						many_to_many_relationships_mark += "\tlet #{rel.name} = List<EN#{rel.destinationEntity}>()\n"
+					else
+						many_to_many_relationships_mark += "\tlet #{rel.name} =  LinkingObjects(fromType: EN#{search_entity.name}.self, property: \"#{relationship_inversed.name}\")\n"
+					end
 				end
 			end
 
@@ -217,10 +231,13 @@ class EntityTemplate
 				result += "\t//MARK: - One-to-one relationships\n"
 				result += "#{one_to_one_relationships_mark}\n"
 			end
-
 			if one_to_many_relationships_mark != ""
 				result += "\t//MARK: - One-to-many relationships\n"
 				result += "#{one_to_many_relationships_mark}\n"
+			end
+			if many_to_many_relationships_mark != ""
+				result += "\t//MARK: - Many-to-many relationships\n"
+				result += "#{many_to_many_relationships_mark}\n"
 			end
 		end
 

@@ -2,7 +2,7 @@
 // ChatMessageParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -33,7 +33,8 @@ final class ChatMessageParser: IChatMessageParser {
 		enChatMessage.type = try json.value(by: "type")
 
 		//MARK: - One-to-one relationships parsing
-		enChatMessage.createdBy = try self.userParser.serialize(json: json.value(by: "createdBy"))
+		let _createdBy = try self.userParser.serialize(json: json.value(by: "createdBy"))
+		_createdBy.messages.append(enChatMessage)
 		enChatMessage.userCase = try self.caseParser.serialize(json: json.value(by: "userCase"))
 
 		return enChatMessage

@@ -2,7 +2,7 @@
 // ENChatMessage.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -20,7 +20,10 @@ class ENChatMessage: ENObject {
 	dynamic var type: String = ""
 
 	//MARK: - One-to-one relationships
-	dynamic var createdBy: ENUser?
+	private let createdBys = LinkingObjects(fromType: ENUser.self, property: "messages")
+	var createdBy: ENUser? {
+		return self.createdBys.first
+	}
 	dynamic var userCase: ENCase?
 
 }

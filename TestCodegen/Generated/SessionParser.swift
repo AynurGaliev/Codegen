@@ -2,7 +2,7 @@
 // SessionParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -32,8 +32,10 @@ final class SessionParser: ISessionParser {
 
 		//MARK: - One-to-one relationships parsing
 		enSession.emsAgency = try self.eMSAgencyParser.serialize(json: json.value(by: "emsAgency"))
-		enSession.truck = try self.truckParser.serialize(json: json.value(by: "truck"))
-		enSession.user = try self.userParser.serialize(json: json.value(by: "user"))
+		let _truck = try self.truckParser.serialize(json: json.value(by: "truck"))
+		_truck.session = enSession
+		let _user = try self.userParser.serialize(json: json.value(by: "user"))
+		_user.session = enSession
 
 		return enSession
 	}

@@ -2,7 +2,7 @@
 // CaseParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -51,13 +51,30 @@ final class CaseParser: ICaseParser {
 		enCase.id = try json.value(by: "id")
 
 		//MARK: - One-to-one relationships parsing
-		enCase.complaint = try self.complaintParser.serialize(json: json.value(by: "complaint"))
-		enCase.createdBy = try self.userParser.serialize(json: json.value(by: "createdBy"))
-		enCase.destinationHospital = try self.hospitalParser.serialize(json: json.value(by: "destinationHospital"))
-		enCase.emsAgency = try self.eMSAgencyParser.serialize(json: json.value(by: "emsAgency"))
-		enCase.queue = try self.caseQueueParser.serialize(json: json.value(by: "queue"))
-		enCase.truck = try self.truckParser.serialize(json: json.value(by: "truck"))
-		enCase.updatedBy = try self.userParser.serialize(json: json.value(by: "updatedBy"))
+		let _complaint = try self.complaintParser.serialize(json: json.value(by: "complaint"))
+		_complaint.cases.append(enCase)
+		let _createdBy = try self.userParser.serialize(json: json.value(by: "createdBy"))
+		_createdBy.casesCreated.append(enCase)
+		let _destinationHospital = try self.hospitalParser.serialize(json: json.value(by: "destinationHospital"))
+		_destinationHospital.cases.append(enCase)
+		let _emsAgency = try self.eMSAgencyParser.serialize(json: json.value(by: "emsAgency"))
+		_emsAgency.cases.append(enCase)
+		let _queue = try self.caseQueueParser.serialize(json: json.value(by: "queue"))
+		_queue.queueCase = enCase
+		let _truck = try self.truckParser.serialize(json: json.value(by: "truck"))
+		_truck.cases.append(enCase)
+		let _updatedBy = try self.userParser.serialize(json: json.value(by: "updatedBy"))
+		_updatedBy.casesCreated.append(enCase)
+
+		//MARK: - One-to-many relationships parsing
+		let _files = try self.fileParser.serialize(jsonArray: json.value(by: "files"))
+		_files.forEach { $0.userCase = enCase }
+		let _messages = try self.chatMessageParser.serialize(jsonArray: json.value(by: "messages"))
+		_messages.forEach { $0.userCase = enCase }
+
+		//MARK: - Many-to-many relationships parsing
+		let _selectedTags = try self.tagParser.serialize(jsonArray: json.value(by: "selectedTags"))
+		_selectedTags.forEach { $0.cases.append(enCase) }
 
 		return enCase
 	}

@@ -63,7 +63,7 @@ entities.each do |entity|
 	model_content = EntityTemplate::generateModel(entity, model_header, entities)
 	transport_content = TransportTemplate::generateTransportTemplate(entity, transport_header)
 	service_content = ServiceTemplate::generateServiceTemplate(entity, service_header)
-	parser_content = ParserTemplate::generateParserTemplate(entity, parser_header)
+	parser_content = ParserTemplate::generateParserTemplate(entity, parser_header, entities)
 
 	XcodeprojHelper::add_file(machine_file_name, machine_content, machine_entities_group, project_name, project)
 	XcodeprojHelper::add_file(human_file_name, human_content, human_entities_group, project_name, project)

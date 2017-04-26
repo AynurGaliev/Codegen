@@ -2,7 +2,7 @@
 // ComplaintParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -36,6 +36,14 @@ final class ComplaintParser: IComplaintParser {
 		enComplaint.showOnsets = try json.value(by: "showOnsets")
 		enComplaint.showSymptoms = try json.value(by: "showSymptoms")
 		enComplaint.showVitals = try json.value(by: "showVitals")
+
+		//MARK: - One-to-many relationships parsing
+		let _cases = try self.caseParser.serialize(jsonArray: json.value(by: "cases"))
+		_cases.forEach { enComplaint.cases.append($0) }
+
+		//MARK: - Many-to-many relationships parsing
+		let _tags = try self.tagParser.serialize(jsonArray: json.value(by: "tags"))
+		_tags.forEach { $0.complaints.append(enComplaint) }
 
 		return enComplaint
 	}

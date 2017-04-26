@@ -2,7 +2,7 @@
 // ENTag.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -19,8 +19,8 @@ final class ENTag: ENObject {
 	dynamic var name: String = ""
 	dynamic var typeIdentifier: String = ""
 
-	//MARK: - One-to-many relationships
-	let cases =  LinkingObjects(fromType: ENCase.self, property: "selectedTags")
-	let complaints =  LinkingObjects(fromType: ENComplaint.self, property: "tags")
+	//MARK: - Many-to-many relationships
+	let cases = List<ENCase>()
+	let complaints = List<ENComplaint>()
 
 }

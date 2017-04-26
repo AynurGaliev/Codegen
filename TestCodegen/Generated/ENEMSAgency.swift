@@ -2,7 +2,7 @@
 // ENEMSAgency.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -25,8 +25,10 @@ final class ENEMSAgency: ENObject {
 	}
 
 	//MARK: - One-to-many relationships
+	let cases = List<ENCase>()
+
+	//MARK: - Many-to-many relationships
 	let administrators =  LinkingObjects(fromType: ENUser.self, property: "emsAgenciesAdministered")
-	let cases = LinkingObjects(fromType: ENCase.self, property: "emsAgency")
 	let hospitals =  LinkingObjects(fromType: ENHospital.self, property: "emsAgencies")
 	let members =  LinkingObjects(fromType: ENUser.self, property: "emsAgenciesAdministered")
 	let trucks =  LinkingObjects(fromType: ENTruck.self, property: "agencies")

@@ -2,7 +2,7 @@
 // ENComplaint.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -25,7 +25,9 @@ final class ENComplaint: ENObject {
 	dynamic var showVitals: Bool = false
 
 	//MARK: - One-to-many relationships
-	let cases = LinkingObjects(fromType: ENCase.self, property: "complaint")
+	let cases = List<ENCase>()
+
+	//MARK: - Many-to-many relationships
 	let tags =  LinkingObjects(fromType: ENTag.self, property: "complaints")
 
 }

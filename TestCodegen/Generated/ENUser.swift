@@ -2,7 +2,7 @@
 // ENUser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -18,7 +18,7 @@ final class ENUser: ENObject {
 	dynamic var firstName: String?
 	dynamic var id: String = ""
 	dynamic var lastName: String?
-	dynamic var profileImageUrl: NSURL?
+	dynamic var profileImageUrl: Data?
 	dynamic var username: String?
 
 	//MARK: - One-to-one relationships
@@ -29,12 +29,14 @@ final class ENUser: ENObject {
 	dynamic var session: ENSession?
 
 	//MARK: - One-to-many relationships
-	let casesCreated = LinkingObjects(fromType: ENCase.self, property: "createdBy")
-	let casesUpdated = LinkingObjects(fromType: ENCase.self, property: "createdBy")
-	let emsAgenciesAdministered =  LinkingObjects(fromType: ENEMSAgency.self, property: "administrators")
-	let emsAgencyMemberships =  LinkingObjects(fromType: ENEMSAgency.self, property: "administrators")
-	let hospitalsAdministrated =  LinkingObjects(fromType: ENHospital.self, property: "administrators")
-	let hospitalsMemberships =  LinkingObjects(fromType: ENHospital.self, property: "administrators")
-	let messages = LinkingObjects(fromType: ENChatMessage.self, property: "createdBy")
+	let casesCreated = List<ENCase>()
+	let casesUpdated = List<ENCase>()
+	let messages = List<ENChatMessage>()
+
+	//MARK: - Many-to-many relationships
+	let emsAgenciesAdministered = List<ENEMSAgency>()
+	let emsAgencyMemberships = List<ENEMSAgency>()
+	let hospitalsAdministrated = List<ENHospital>()
+	let hospitalsMemberships = List<ENHospital>()
 
 }

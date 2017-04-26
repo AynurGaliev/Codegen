@@ -2,7 +2,7 @@
 // ENAPIRequest.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -16,6 +16,9 @@ class ENAPIRequest: RealmSwift.Object {
 	dynamic var isRequired: Bool = false
 
 	//MARK: - One-to-one relationships
-	dynamic var queue: ENCaseQueue?
+	private let queues = LinkingObjects(fromType: ENCaseQueue.self, property: "requests")
+	var queue: ENCaseQueue? {
+		return self.queues.first
+	}
 
 }

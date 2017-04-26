@@ -53,7 +53,7 @@ class ModelReader
 				attribute_type = nil
 				attributeRoot.xpath('userInfo').xpath('entry').each do |info|
 					if info[:key] == "attributeValueClassName"
-						attribute_type = info[:value]
+						attribute_type = Type::convertToSwiftType(info[:value])
 					end
 				end
 				if attribute_type == nil 

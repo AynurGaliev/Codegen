@@ -2,7 +2,7 @@
 // TruckParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -34,6 +34,14 @@ final class TruckParser: ITruckParser {
 
 		//MARK: - One-to-one relationships parsing
 		enTruck.session = try self.sessionParser.serialize(json: json.value(by: "session"))
+
+		//MARK: - One-to-many relationships parsing
+		let _cases = try self.caseParser.serialize(jsonArray: json.value(by: "cases"))
+		_cases.forEach { enTruck.cases.append($0) }
+
+		//MARK: - Many-to-many relationships parsing
+		let _agencies = try self.eMSAgencyParser.serialize(jsonArray: json.value(by: "agencies"))
+		_agencies.forEach { enTruck.agencies.append($0) }
 
 		return enTruck
 	}

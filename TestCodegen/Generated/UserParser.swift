@@ -2,7 +2,7 @@
 // UserParser.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -43,8 +43,27 @@ final class UserParser: IUserParser {
 		enUser.username = try json.value(by: "username")
 
 		//MARK: - One-to-one relationships parsing
-		enUser.credential = try self.userCredentialParser.serialize(json: json.value(by: "credential"))
+		let _credential = try self.userCredentialParser.serialize(json: json.value(by: "credential"))
+		_credential.user = enUser
 		enUser.session = try self.sessionParser.serialize(json: json.value(by: "session"))
+
+		//MARK: - One-to-many relationships parsing
+		let _casesCreated = try self.caseParser.serialize(jsonArray: json.value(by: "casesCreated"))
+		_casesCreated.forEach { enUser.casesCreated.append($0) }
+		let _casesUpdated = try self.caseParser.serialize(jsonArray: json.value(by: "casesUpdated"))
+		_casesUpdated.forEach { enUser.casesUpdated.append($0) }
+		let _messages = try self.chatMessageParser.serialize(jsonArray: json.value(by: "messages"))
+		_messages.forEach { enUser.messages.append($0) }
+
+		//MARK: - Many-to-many relationships parsing
+		let _emsAgenciesAdministered = try self.eMSAgencyParser.serialize(jsonArray: json.value(by: "emsAgenciesAdministered"))
+		_emsAgenciesAdministered.forEach { enUser.emsAgenciesAdministered.append($0) }
+		let _emsAgencyMemberships = try self.eMSAgencyParser.serialize(jsonArray: json.value(by: "emsAgencyMemberships"))
+		_emsAgencyMemberships.forEach { enUser.emsAgencyMemberships.append($0) }
+		let _hospitalsAdministrated = try self.hospitalParser.serialize(jsonArray: json.value(by: "hospitalsAdministrated"))
+		_hospitalsAdministrated.forEach { enUser.hospitalsAdministrated.append($0) }
+		let _hospitalsMemberships = try self.hospitalParser.serialize(jsonArray: json.value(by: "hospitalsMemberships"))
+		_hospitalsMemberships.forEach { enUser.hospitalsMemberships.append($0) }
 
 		return enUser
 	}

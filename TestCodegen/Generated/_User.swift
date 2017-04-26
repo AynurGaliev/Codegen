@@ -2,7 +2,7 @@
 // _User.swift
 // TestCodegen
 //
-// Created by Codegen on 26/04/2017 12:28.
+// Created by Codegen on 26/04/2017 13:59.
 // Copyright © 2017 Codegen. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ class _User: _Object {
 	let firstName: String?
 	let id: String
 	let lastName: String?
-	let profileImageUrl: NSURL?
+	let profileImageUrl: Data?
 	let username: String?
 	let casesCreated: [Case]?
 	let casesUpdated: [Case]?
@@ -27,7 +27,7 @@ class _User: _Object {
 	let messages: [ChatMessage]?
 	let session: Session?
 
-	init(casesCreated: [Case]?, casesUpdated: [Case]?, createdAt: Date, credential: UserCredential?, displayName: String?, email: String?, emsAgenciesAdministered: [EMSAgency]?, emsAgencyMemberships: [EMSAgency]?, firstName: String?, hospitalsAdministrated: [Hospital]?, hospitalsMemberships: [Hospital]?, id: String, lastName: String?, localUpdatedAt: Date, messages: [ChatMessage]?, profileImageUrl: NSURL?, session: Session?, updatedAt: Date?, username: String?) {
+	init(casesCreated: [Case]?, casesUpdated: [Case]?, createdAt: Date, credential: UserCredential?, displayName: String?, email: String?, emsAgenciesAdministered: [EMSAgency]?, emsAgencyMemberships: [EMSAgency]?, firstName: String?, hospitalsAdministrated: [Hospital]?, hospitalsMemberships: [Hospital]?, id: String, lastName: String?, localUpdatedAt: Date, messages: [ChatMessage]?, profileImageUrl: Data?, session: Session?, updatedAt: Date?, username: String?) {
 		self.casesCreated = casesCreated
 		self.casesUpdated = casesUpdated
 		self.credential = credential

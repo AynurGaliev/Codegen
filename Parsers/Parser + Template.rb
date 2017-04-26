@@ -2,7 +2,7 @@ require './Helpers/Helpers.rb'
 
 class ParserTemplate
 
-	def self.generateParserTemplate(entity, header)
+	def self.generateParserTemplate(entity, header, entities)
 		result = ""
 		result += header
 		
@@ -35,11 +35,52 @@ class ParserTemplate
 
 		one_to_one_relationships_mark = ""
 		one_to_many_relationships_mark = ""
-		entity.relationships.each do |r|
-			if r.toMany == "NO"
-				one_to_one_relationships_mark += "\t\ten#{entity.name}.#{r.name} = try self.#{r.destinationEntity.lowercase_first}Parser.serialize(json: json.value(by: \"#{r.name}\"))\n"
+		many_to_many_relationships_mark = ""
+
+		entities = entities.sort { |x, y| x.name <=> y.name }
+
+		entity.relationships.each do |rel|
+				
+				search_entity = entities.find { |e| e.name == rel.destinationEntity }
+				relationship_inversed = search_entity.relationships.find { |rel| rel.destinationEntity == entity.name }
+
+				if rel.toMany == "NO" && relationship_inversed.toMany == "NO"
+					if entity.name > search_entity.name
+						one_to_one_relationships_mark += "\t\ten#{entity.name}.#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(json: json.value(by: \"#{rel.name}\"))\n"
+					else
+						one_to_one_relationships_mark += "\t\tlet _#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(json: json.value(by: \"#{rel.name}\"))\n"
+						one_to_one_relationships_mark += "\t\t_#{rel.name}.#{relationship_inversed.name} = en#{entity.name}\n"
+					end
+				elsif rel.toMany == "YES" && relationship_inversed.toMany == "NO"
+					if entity.name > search_entity.name
+						one_to_many_relationships_mark += "\t\tlet _#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(jsonArray: json.value(by: \"#{rel.name}\"))\n"
+						one_to_many_relationships_mark += "\t\t_#{rel.name}.forEach { en#{entity.name}.#{rel.name}.append($0) }\n"
+					else
+						one_to_many_relationships_mark += "\t\tlet _#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(jsonArray: json.value(by: \"#{rel.name}\"))\n"
+						one_to_many_relationships_mark += "\t\t_#{rel.name}.forEach { $0.#{relationship_inversed.name} = en#{entity.name} }\n"
+					end
+				elsif rel.toMany == "NO" && relationship_inversed.toMany == "YES"
+					if entity.name > search_entity.name
+						puts "1 - #{entity.name} - #{rel.name}, #{search_entity.name} - #{relationship_inversed.name}"
+						one_to_one_relationships_mark += "\t\ten#{entity.name}.#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(json: json.value(by: \"#{rel.name}\"))\n"
+					else
+						puts "2 - #{entity.name} - #{rel.name}, #{search_entity.name} - #{relationship_inversed.name}"
+						one_to_one_relationships_mark += "\t\tlet _#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(json: json.value(by: \"#{rel.name}\"))\n"
+						one_to_one_relationships_mark += "\t\t_#{rel.name}.#{relationship_inversed.name}.append(en#{entity.name})\n"
+					end
+				elsif rel.toMany == "YES" && relationship_inversed.toMany == "YES"
+					if entity.name > search_entity.name
+						puts "3 - #{entity.name} - #{rel.name}, #{search_entity.name} - #{relationship_inversed.name}"
+						many_to_many_relationships_mark += "\t\tlet _#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(jsonArray: json.value(by: \"#{rel.name}\"))\n"
+						many_to_many_relationships_mark += "\t\t_#{rel.name}.forEach { en#{entity.name}.#{rel.name}.append($0) }\n"
+					else
+						puts "4 - #{entity.name} - #{rel.name}, #{search_entity.name} - #{relationship_inversed.name}"
+						many_to_many_relationships_mark += "\t\tlet _#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(jsonArray: json.value(by: \"#{rel.name}\"))\n"
+						many_to_many_relationships_mark += "\t\t_#{rel.name}.forEach { $0.#{relationship_inversed.name}.append(en#{entity.name}) }\n"
+					end
+				end
 			end
-		end
+
 		if one_to_one_relationships_mark != ""
 			result += "\n\t\t//MARK: - One-to-one relationships parsing\n"
 			result += one_to_one_relationships_mark
@@ -47,6 +88,10 @@ class ParserTemplate
 		if one_to_many_relationships_mark != ""
 			result += "\n\t\t//MARK: - One-to-many relationships parsing\n"
 			result += one_to_many_relationships_mark
+		end
+		if many_to_many_relationships_mark != ""
+			result += "\n\t\t//MARK: - Many-to-many relationships parsing\n"
+			result += many_to_many_relationships_mark
 		end
 		result += "\n\t\treturn en#{entity.name}\n"
 		result += "\t}\n\n"
@@ -65,151 +110,3 @@ class ParserTemplate
 	end
 
 end
-
-# import SwiftyJSON
-
-# protocol ICaseParser: class {
-#     func serialize(json: JSON) throws -> ENCase
-#     func deserialize(enCase: ENCase) -> JSON
-#     func inject(complaintParser: IComplaintParser!)
-#     func inject(hospitalParser: IHospitalParser!)
-#     func inject(agencyParser: IAgencyParser!)
-#     func inject(userParser: IUserParser!)
-#     func inject(truckParser: ITruckParser!)
-#     func inject(locationParser: ILocationParser!)
-#     func inject(uploadParser: IUploadParser!)
-#     func inject(messageParser: IMessageParser!)
-# }
-
-# enum CaseParserError: Error {
-#     case FieldCannotBeNil(String)
-# }
-
-# final class CaseParser: ICaseParser {
-
-#     private var complaintParser : IComplaintParser!
-#     private var hospitalParser  : IHospitalParser!
-#     private var agencyParser    : IAgencyParser!
-#     private var userParser      : IUserParser!
-#     private var truckParser     : ITruckParser!
-#     private var locationParser  : ILocationParser!
-#     private var uploadParser    : IUploadParser!
-#     private var messageParser   : IMessageParser!
-    
-#     func inject(complaintParser: IComplaintParser!) {
-#         self.complaintParser = complaintParser
-#     }
-    
-#     func inject(hospitalParser: IHospitalParser!) {
-#         self.hospitalParser = hospitalParser
-#     }
-    
-#     func inject(agencyParser: IAgencyParser!) {
-#         self.agencyParser = agencyParser
-#     }
-    
-#     func inject(userParser: IUserParser!) {
-#         self.userParser = userParser
-#     }
-    
-#     func inject(truckParser: ITruckParser!) {
-#         self.truckParser = truckParser
-#     }
-    
-#     func inject(locationParser: ILocationParser!) {
-#         self.locationParser = locationParser
-#     }
-    
-#     func inject(uploadParser: IUploadParser!) {
-#         self.uploadParser = uploadParser
-#     }
-    
-#     func inject(messageParser: IMessageParser!) {
-#         self.messageParser = messageParser
-#     }
-    
-#     func serialize(json: JSON) throws -> ENCase {
-#         guard let id: String = json[Case.Keys.id].string else { throw CaseParserError.FieldCannotBeNil(Case.Keys.id) }
-#         guard let caseNumber: Int = json[Case.Keys.caseNumber].int else { throw CaseParserError.FieldCannotBeNil(Case.Keys.caseNumber) }
-#         //MARK: - Main
-#         let enCase = ENCase()
-#         enCase.id = id
-#         enCase.caseNumber = caseNumber
-#         enCase.beganAt = json[Case.Keys.beganAt].stringValue.ISO8601Date
-#         enCase.complaint = try? self.complaintParser.serialize(json: json[Case.Keys.complaint])
-#         enCase.destinationHospital = try? self.hospitalParser.serialize(json: json[Case.Keys.destinationHospital])
-#         enCase.emsAgency = try? self.agencyParser.serialize(json: json[Case.Keys.agency])
-#         enCase.user = try? self.userParser.serialize(json: json[Case.Keys.user])
-#         enCase.truck = try? self.truckParser.serialize(json: json[Case.Keys.truck])
-#         enCase.lastLocation = try? self.locationParser.serialize(json: json[Case.Keys.lastLocation])
-#         if let uploads = json[Case.Keys.uploads].array {
-#             for uploadJSON in uploads {
-#                 let upload: ENUpload = try self.uploadParser.serialize(json: uploadJSON)
-#                 enCase.uploads.append(upload)
-#             }
-#         }
-#         if let messages = json[Case.Keys.messages].array {
-#             for messageJSON in messages {
-#                 let message: ENMessage = try self.messageParser.serialize(json: messageJSON)
-#                 message.twCase = enCase
-#             }
-#         }
-#         return enCase
-#     }
-    
-#     func deserialize(enCase: ENCase) -> JSON {
-#         var json: [String : Any?] = [:]
-#         json[Case.Keys.id] = enCase.id
-#         json[Case.Keys.caseNumber] = enCase.caseNumber
-#         json[Case.Keys.beganAt] = enCase.beganAt?.ISO8601String
-#         if let lComplaint = enCase.complaint {
-#             json[Case.Keys.complaint] = self.complaintParser.deserialize(complaint: lComplaint)
-#         } else {
-#             json[Case.Keys.complaint] = nil
-#         }
-#         if let lHospital = enCase.destinationHospital {
-#             json[Case.Keys.destinationHospital] = self.hospitalParser.deserialize(hospital: lHospital)
-#         } else {
-#             json[Case.Keys.destinationHospital] = nil
-#         }
-#         if let lAgency = enCase.emsAgency {
-#             json[Case.Keys.agency] = self.agencyParser.deserialize(agency: lAgency)
-#         } else {
-#             json[Case.Keys.agency] = nil
-#         }
-#         if let lUser = enCase.user {
-#             json[Case.Keys.user] = self.userParser.deserialize(user: lUser)
-#         } else {
-#             json[Case.Keys.user] = nil
-#         }
-#         if let lTruck = enCase.truck {
-#             json[Case.Keys.truck] = self.truckParser.deserialize(truck: lTruck)
-#         } else {
-#             json[Case.Keys.truck] = nil
-#         }
-#         if let lLocation = enCase.lastLocation {
-#             json[Case.Keys.lastLocation] = self.locationParser.deserialize(location: lLocation)
-#         } else {
-#             json[Case.Keys.lastLocation] = nil
-#         }
-#         if enCase.uploads.count > 0 {
-#             var uploadsJSON: [JSON] = []
-#             for upload in enCase.uploads {
-#                 uploadsJSON.append(self.uploadParser.deserialize(upload: upload))
-#             }
-#             json[Case.Keys.uploads] = uploadsJSON
-#         } else {
-#             json[Case.Keys.uploads] = nil
-#         }
-#         if enCase.messages.count > 0 {
-#             var messagesJSON: [JSON] = []
-#             for message in enCase.messages {
-#                 messagesJSON.append(self.messageParser.deserialize(message: message))
-#             }
-#             json[Case.Keys.messages] = messagesJSON
-#         } else {
-#             json[Case.Keys.messages] = nil
-#         }
-#         return JSON(json)
-#     }
-# }

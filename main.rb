@@ -13,6 +13,7 @@ require './Entities/HeaderTemplate.rb'
 require './Transport/Transport + Template.rb'
 require './Services/Service + Template.rb'
 require './Parsers/Parser + Template.rb'
+require './Serializers/Serializer + Template.rb'
 
 data_model_path = ARGV[0]
 
@@ -36,6 +37,7 @@ transport_group = XcodeprojHelper::addGroup(project_name, project, "Transport la
 entities_group = XcodeprojHelper::addGroup(project_name, project, "Data layer", bisness_logic_group)
 service_group = XcodeprojHelper::addGroup(project_name, project, "Service layer", bisness_logic_group)
 parser_group = XcodeprojHelper::addGroup(project_name, project, "Parsers layer", bisness_logic_group)
+serialization_group = XcodeprojHelper::addGroup(project_name, project, "Serializers layer", bisness_logic_group)
 
 poso_group = XcodeprojHelper::addGroup(project_name, project, "POSO", entities_group)
 machine_entities_group = XcodeprojHelper::addGroup(project_name, project, "Machine", poso_group)
@@ -50,6 +52,7 @@ entities.each do |entity|
 	transport_file_name = "#{entity.name}Transport.swift"
 	service_file_name = "#{entity.name}Service.swift"
 	parser_file_name = "#{entity.name}Parser.swift"
+	serializer_file_name = "#{entity.name}Serializer.swift"
 
 	machine_header = HeaderTemplate::generateHeader(project_name, machine_file_name)
 	human_header = HeaderTemplate::generateHeader(project_name, human_file_name)
@@ -57,6 +60,7 @@ entities.each do |entity|
 	transport_header = HeaderTemplate::generateHeader(project_name, transport_file_name)
 	service_header = HeaderTemplate::generateHeader(project_name, service_file_name)
 	parser_header = HeaderTemplate::generateHeader(project_name, parser_file_name)
+	serializer_header = HeaderTemplate::generateHeader(project_name, serializer_file_name)
 
 	human_content =  EntityTemplate::generateHumanTemplate(entity, human_header, entities)
 	machine_content = EntityTemplate::generateMachineTemplate(entity, machine_header, entities)
@@ -64,6 +68,7 @@ entities.each do |entity|
 	transport_content = TransportTemplate::generateTransportTemplate(entity, transport_header)
 	service_content = ServiceTemplate::generateServiceTemplate(entity, service_header)
 	parser_content = ParserTemplate::generateParserTemplate(entity, parser_header, entities)
+	serializer_content = SerializerTemplate::generateSerializerTemplate(entity, serializer_header, entities)
 
 	XcodeprojHelper::add_file(machine_file_name, machine_content, machine_entities_group, project_name, project)
 	XcodeprojHelper::add_file(human_file_name, human_content, human_entities_group, project_name, project)
@@ -71,4 +76,5 @@ entities.each do |entity|
 	XcodeprojHelper::add_file(transport_file_name, transport_content, transport_group, project_name, project)
 	XcodeprojHelper::add_file(service_file_name, service_content, service_group, project_name, project)
 	XcodeprojHelper::add_file(parser_file_name, parser_content, parser_group, project_name, project)
+	XcodeprojHelper::add_file(serializer_file_name, serializer_content, serialization_group, project_name, project)
 end

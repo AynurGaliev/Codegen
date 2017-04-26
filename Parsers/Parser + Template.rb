@@ -61,20 +61,16 @@ class ParserTemplate
 					end
 				elsif rel.toMany == "NO" && relationship_inversed.toMany == "YES"
 					if entity.name > search_entity.name
-						puts "1 - #{entity.name} - #{rel.name}, #{search_entity.name} - #{relationship_inversed.name}"
 						one_to_one_relationships_mark += "\t\ten#{entity.name}.#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(json: json.value(by: \"#{rel.name}\"))\n"
 					else
-						puts "2 - #{entity.name} - #{rel.name}, #{search_entity.name} - #{relationship_inversed.name}"
 						one_to_one_relationships_mark += "\t\tlet _#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(json: json.value(by: \"#{rel.name}\"))\n"
 						one_to_one_relationships_mark += "\t\t_#{rel.name}.#{relationship_inversed.name}.append(en#{entity.name})\n"
 					end
 				elsif rel.toMany == "YES" && relationship_inversed.toMany == "YES"
 					if entity.name > search_entity.name
-						puts "3 - #{entity.name} - #{rel.name}, #{search_entity.name} - #{relationship_inversed.name}"
 						many_to_many_relationships_mark += "\t\tlet _#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(jsonArray: json.value(by: \"#{rel.name}\"))\n"
 						many_to_many_relationships_mark += "\t\t_#{rel.name}.forEach { en#{entity.name}.#{rel.name}.append($0) }\n"
 					else
-						puts "4 - #{entity.name} - #{rel.name}, #{search_entity.name} - #{relationship_inversed.name}"
 						many_to_many_relationships_mark += "\t\tlet _#{rel.name} = try self.#{rel.destinationEntity.lowercase_first}Parser.serialize(jsonArray: json.value(by: \"#{rel.name}\"))\n"
 						many_to_many_relationships_mark += "\t\t_#{rel.name}.forEach { $0.#{relationship_inversed.name}.append(en#{entity.name}) }\n"
 					end

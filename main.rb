@@ -44,7 +44,7 @@ machine_entities_group = XcodeprojHelper::addGroup(project_name, project, "Machi
 human_entities_group = XcodeprojHelper::addGroup(project_name, project, "Human", poso_group)
 model_entities_group = XcodeprojHelper::addGroup(project_name, project, "Database models", entities_group)
 
-entities.each do |entity|
+entities[0...-8].each do |entity|
 
 	machine_file_name = "_#{entity.name}.swift"
 	human_file_name = "#{entity.name}.swift"

@@ -19,7 +19,7 @@ data_model_path = ARGV[0]
 
 project_paths = Dir["*.xcodeproj"] # PROJECT.xcodeproj
 
-if project_paths.length > 2
+if project_paths.length > 1
 	puts "There are more than 1 .xcodeproj files. Abort"
 	exit 1
 end
@@ -44,6 +44,7 @@ machine_entities_group = XcodeprojHelper::addGroup(project_name, project, "Machi
 human_entities_group = XcodeprojHelper::addGroup(project_name, project, "Human", poso_group)
 model_entities_group = XcodeprojHelper::addGroup(project_name, project, "Database models", entities_group)
 
+iterator = 0
 entities.each do |entity|
 
 	machine_file_name = "_#{entity.name}.swift"
@@ -77,4 +78,14 @@ entities.each do |entity|
 	XcodeprojHelper::add_file(service_file_name, service_content, service_group, project)
 	XcodeprojHelper::add_file(parser_file_name, parser_content, parser_group, project)
 	XcodeprojHelper::add_file(serializer_file_name, serializer_content, serialization_group, project)
+
+	iterator += 1 
+	print "Generating files for entities - #{(100.0 * (iterator.to_f/entities.length.to_f)).to_i} %"
+	if iterator != entities.length
+		print "\r"
+	else 
+		print "\n"
+	end
 end
+
+puts "Done!"

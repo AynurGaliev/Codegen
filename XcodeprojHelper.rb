@@ -63,10 +63,8 @@ class XcodeprojHelper
 
 	def self.add_file(name, content, group, project, rewrite = false)
 		full_path = File.join(group.real_path, name)
-		puts full_path
 		if !rewrite
 			if !File.exists?(full_path)
-				puts "Not exists"
 				saveFile(full_path, content, group, project, true)
 			end
 		else 

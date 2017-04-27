@@ -105,18 +105,7 @@ class EntityTemplate
 		if entity.parent != nil
 			result += "\t\tsuper.init(#{super_init_string.sort_by {|a| a }.join(", ")})\n"
 		end
-		result += "\t}\n\n"
-
-		result += "\tenum Keys {\n"
-		entity.attributes.each do |attr|
-			result += "\t\tstatic let #{attr.name}: String = \"#{attr.name}\"\n"
-		end
-
-		entity.relationships.each do |rel|
-			result += "\t\tstatic let #{rel.name}: String = \"#{rel.name}\"\n"
-		end
 		result += "\t}\n"
-
 		result += "}\n\n"
 
 		result += "func ==(lhs: #{entity.name}, rhs: #{entity.name}) -> Bool {\n"
@@ -143,8 +132,17 @@ class EntityTemplate
 		result += "\treturn lhs! == rhs!\n"
 		result += "}\n"
 
+		result += "\nextension #{entity.name} {\n\n"
+		result += "\tenum Keys {\n"
+		entity.attributes.each do |attr|
+			result += "\t\tstatic let #{attr.name}: String = \"#{attr.name}\"\n"
+		end
+		entity.relationships.each do |rel|
+			result += "\t\tstatic let #{rel.name}: String = \"#{rel.name}\"\n"
+		end
+		result += "\t}\n"
+		result += "}"
 		result
-
 	end
 
 	def self.generateHumanTemplate(entity, header, entities)

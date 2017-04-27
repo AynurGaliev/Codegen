@@ -44,7 +44,7 @@ machine_entities_group = XcodeprojHelper::addGroup(project_name, project, "Machi
 human_entities_group = XcodeprojHelper::addGroup(project_name, project, "Human", poso_group)
 model_entities_group = XcodeprojHelper::addGroup(project_name, project, "Database models", entities_group)
 
-entities[0...-8].each do |entity|
+entities.each do |entity|
 
 	machine_file_name = "_#{entity.name}.swift"
 	human_file_name = "#{entity.name}.swift"
@@ -70,11 +70,11 @@ entities[0...-8].each do |entity|
 	parser_content = ParserTemplate::generateParserTemplate(entity, parser_header, entities)
 	serializer_content = SerializerTemplate::generateSerializerTemplate(entity, serializer_header, entities)
 
-	XcodeprojHelper::add_file(machine_file_name, machine_content, machine_entities_group, project_name, project)
-	XcodeprojHelper::add_file(human_file_name, human_content, human_entities_group, project_name, project)
-	XcodeprojHelper::add_file(model_file_name, model_content, model_entities_group, project_name, project)
-	XcodeprojHelper::add_file(transport_file_name, transport_content, transport_group, project_name, project)
-	XcodeprojHelper::add_file(service_file_name, service_content, service_group, project_name, project)
-	XcodeprojHelper::add_file(parser_file_name, parser_content, parser_group, project_name, project)
-	XcodeprojHelper::add_file(serializer_file_name, serializer_content, serialization_group, project_name, project)
+	XcodeprojHelper::add_file(machine_file_name, machine_content, machine_entities_group, project, true)
+	XcodeprojHelper::add_file(human_file_name, human_content, human_entities_group, project)
+	XcodeprojHelper::add_file(model_file_name, model_content, model_entities_group, project)
+	XcodeprojHelper::add_file(transport_file_name, transport_content, transport_group, project)
+	XcodeprojHelper::add_file(service_file_name, service_content, service_group, project)
+	XcodeprojHelper::add_file(parser_file_name, parser_content, parser_group, project)
+	XcodeprojHelper::add_file(serializer_file_name, serializer_content, serialization_group, project)
 end

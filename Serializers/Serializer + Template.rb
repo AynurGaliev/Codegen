@@ -6,13 +6,19 @@ class SerializerTemplate
 		result = ""
 		result += header
 		result += "protocol I#{entity.name}Serializer: class {\n"
+		result += "\t//MARK: - Interface\n"
 		result += "\tfunc serialize(en#{entity.name}: EN#{entity.name}?, depth: Int) -> #{entity.name}?\n"
 		result += "\tfunc serialize(en#{entity.name}s: [EN#{entity.name}], depth: Int) -> [#{entity.name}]\n"
+		result += "\tfunc serialize(plain#{entity.name}: #{entity.name}?) -> EN#{entity.name}?\n"
+		result += "\tfunc serialize(plain#{entity.name}s: [#{entity.name}]) -> [EN#{entity.name}]\n"
 
 		inherited_attributes = Helpers::recursiveAttributes(entity)
 		inherited_relationships = Helpers::recursiveRealtionships(entity)
 
 		entity_names = inherited_relationships.map { |r| r.destinationEntity }.uniq
+		if entity_names.length != 0 
+			result += "\t//MARK: - Dependencies\n"
+		end
 		entity_names.each do |r|
 			result += "\tvar #{r.lowercase_first}Serializer: I#{r.upcase_first}Serializer! { get set }\n"
 		end
@@ -70,38 +76,122 @@ class SerializerTemplate
 		result += "\t\t\tserialized#{entity.name}s.append(entity)\n"
 		result += "\t\t}\n"
 		result += "\t\treturn serialized#{entity.name}s\n"
+		result += "\t}\n\n"
+
+		result += "\tfunc serialize(plain#{entity.name}: #{entity.name}?) -> EN#{entity.name}? {\n"
+		result += "\t\tguard let l#{entity.name} = plain#{entity.name} else { return nil }\n"
+		result += "\n\t\tlet en#{entity.name}: EN#{entity.name} = EN#{entity.name}()\n\n"
+		if inherited_attributes.length > 0 
+			result += "\t\t//MARK: - Attributes\n"
+		end
+		inherited_attributes.each do |attr|
+			if (attr.is_optional == "YES") && (attr.type == "Int" || attr.type == "Float" || attr.type == "Double" || attr.type == "Bool" || attr.type == "Int8" || attr.type == "Int16"|| attr.type == "Int32" || attr.type == "Int64")   
+				result += "\t\ten#{entity.name}.#{attr.name}.value = l#{entity.name}.#{attr.name}\n"
+			else
+				result += "\t\ten#{entity.name}.#{attr.name} = l#{entity.name}.#{attr.name}\n"
+			end
+		end
+
+		entities = entities.sort { |x, y| x.name <=> y.name }
+
+		one_to_one_relationships_mark = ""
+		one_to_many_relationships_mark = ""
+		many_to_many_relationships_mark = ""
+
+		entity.relationships.each do |rel|
+
+				search_entity = entities.find { |e| e.name == rel.destinationEntity }
+				relationship_inversed = search_entity.relationships.find { |r| r.destinationEntity == entity.name }
+
+				if rel.toMany == "NO" && relationship_inversed.toMany == "NO"
+					if entity.name > search_entity.name
+						one_to_one_relationships_mark += "\t\tlet _en#{rel.destinationEntity} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}: l#{entity.name}.#{rel.name})\n"
+						one_to_one_relationships_mark += "\t\ten#{entity.name}.#{rel.name} = _en#{rel.destinationEntity}\n"
+					else
+						one_to_one_relationships_mark += "\t\tlet _#{rel.name} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}: l#{entity.name}.#{rel.name})\n"
+						if rel.is_optional == "YES"
+							one_to_one_relationships_mark += "\t\t_#{rel.name}?.#{relationship_inversed.name} = en#{entity.name}\n"
+						else	
+							one_to_one_relationships_mark += "\t\t_#{rel.name}?.#{relationship_inversed.name} = en#{entity.name}\n"
+						end
+					end
+				elsif rel.toMany == "YES" && relationship_inversed.toMany == "NO"
+					if entity.name > search_entity.name
+						if rel.is_optional == "YES"
+							one_to_many_relationships_mark += "\t\tlet _#{rel.name} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}s: l#{entity.name}.#{rel.name} ?? [])\n"
+						else 
+							one_to_many_relationships_mark += "\t\tlet _#{rel.name} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}s: l#{entity.name}.#{rel.name})\n"
+						end
+						one_to_many_relationships_mark += "\t\t_#{rel.name}.forEach { en#{entity.name}.#{rel.name}.append($0) }\n"
+					else
+						if rel.is_optional == "YES"
+							one_to_many_relationships_mark += "\t\tlet _#{rel.name} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}s: l#{entity.name}.#{rel.name} ?? [])\n"
+						else 
+							one_to_many_relationships_mark += "\t\tlet _#{rel.name} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}s: l#{entity.name}.#{rel.name})\n"
+						end
+						one_to_many_relationships_mark += "\t\t_#{rel.name}.forEach { $0.#{relationship_inversed.name} = en#{entity.name} }\n"
+					end
+				elsif rel.toMany == "NO" && relationship_inversed.toMany == "YES"
+					if entity.name > search_entity.name
+						one_to_one_relationships_mark += "\t\tlet _en#{rel.destinationEntity} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}: l#{entity.name}.#{rel.name})\n"
+						one_to_one_relationships_mark += "\t\ten#{entity.name}.#{rel.name} = _en#{rel.destinationEntity}\n"
+					else
+						one_to_one_relationships_mark += "\t\tlet _#{rel.name} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}: l#{entity.name}.#{rel.name})\n"
+						if rel.is_optional == "YES"
+							one_to_one_relationships_mark += "\t\t_#{rel.name}?.#{relationship_inversed.name}.append(en#{entity.name})\n"
+						else	
+							one_to_one_relationships_mark += "\t\t_#{rel.name}?.#{relationship_inversed.name}.append(en#{entity.name})\n"
+						end	
+					end
+				elsif rel.toMany == "YES" && relationship_inversed.toMany == "YES"
+					if entity.name > search_entity.name
+						if rel.is_optional == "YES"
+							many_to_many_relationships_mark += "\t\tlet _#{rel.name} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}s: l#{entity.name}.#{rel.name} ?? [])\n"
+						else 
+							many_to_many_relationships_mark += "\t\tlet _#{rel.name} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}s: l#{entity.name}.#{rel.name})\n"
+						end
+						many_to_many_relationships_mark += "\t\t_#{rel.name}.forEach { en#{entity.name}.#{rel.name}.append($0) }\n"
+					else
+						if rel.is_optional == "YES"
+							many_to_many_relationships_mark += "\t\tlet _#{rel.name} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}s: l#{entity.name}.#{rel.name} ?? [])\n"
+						else 
+							many_to_many_relationships_mark += "\t\tlet _#{rel.name} = self.#{rel.destinationEntity.lowercase_first}Serializer.serialize(plain#{rel.destinationEntity}s: l#{entity.name}.#{rel.name})\n"
+						end
+						many_to_many_relationships_mark += "\t\t_#{rel.name}.forEach { $0.#{relationship_inversed.name}.append(en#{entity.name}) }\n"
+					end
+				end
+		end
+
+		result += "\n"
+		if one_to_one_relationships_mark != ""
+			result += "\t\t//MARK: - One-to-one relationships\n"
+			result += "#{one_to_one_relationships_mark}\n"
+		end
+		if one_to_many_relationships_mark != ""
+			result += "\t\t//MARK: - One-to-many relationships\n"
+			result += "#{one_to_many_relationships_mark}\n"
+		end
+		if many_to_many_relationships_mark != ""
+			result += "\t\t//MARK: - Many-to-many relationships\n"
+			result += "#{many_to_many_relationships_mark}\n"
+		end
+
+		result += "\t\treturn en#{entity.name}\n"
+		result += "\t}\n\n"
+
+		result += "\tfunc serialize(plain#{entity.name}s: [#{entity.name}]) -> [EN#{entity.name}] {\n"
+		result += "\t\tguard plain#{entity.name}s.count > 0 else { return [] }\n"
+		result += "\t\tvar serialized#{entity.name}s: [EN#{entity.name}] = []\n"
+		result += "\t\tfor value in plain#{entity.name}s {\n"
+		result += "\t\t\tguard let entity = self.serialize(plain#{entity.name}: value) else { continue }\n"
+		result += "\t\t\tserialized#{entity.name}s.append(entity)\n"
+		result += "\t\t}\n"
+		result += "\t\treturn serialized#{entity.name}s\n"
 		result += "\t}\n"
-		result += "}\n"
+
+		result += "}\n\n"
+
 		return result
 	end
 
 end
-
-# func serialize(json: JSON) throws -> ENCase {
-#         guard let id: String = json[Case.Keys.id].string else { throw CaseParserError.FieldCannotBeNil(Case.Keys.id) }
-#         guard let caseNumber: Int = json[Case.Keys.caseNumber].int else { throw CaseParserError.FieldCannotBeNil(Case.Keys.caseNumber) }
-#         //MARK: - Main
-#         let enCase = ENCase()
-#         enCase.id = id
-#         enCase.caseNumber = caseNumber
-#         enCase.beganAt = json[Case.Keys.beganAt].stringValue.ISO8601Date
-#         enCase.complaint = try? self.complaintParser.serialize(json: json[Case.Keys.complaint])
-#         enCase.destinationHospital = try? self.hospitalParser.serialize(json: json[Case.Keys.destinationHospital])
-#         enCase.emsAgency = try? self.agencyParser.serialize(json: json[Case.Keys.agency])
-#         enCase.user = try? self.userParser.serialize(json: json[Case.Keys.user])
-#         enCase.truck = try? self.truckParser.serialize(json: json[Case.Keys.truck])
-#         enCase.lastLocation = try? self.locationParser.serialize(json: json[Case.Keys.lastLocation])
-#         if let uploads = json[Case.Keys.uploads].array {
-#             for uploadJSON in uploads {
-#                 let upload: ENUpload = try self.uploadParser.serialize(json: uploadJSON)
-#                 enCase.uploads.append(upload)
-#             }
-#         }
-#         if let messages = json[Case.Keys.messages].array {
-#             for messageJSON in messages {
-#                 let message: ENMessage = try self.messageParser.serialize(json: messageJSON)
-#                 message.twCase = enCase
-#             }
-#         }
-#         return enCase
-#     }

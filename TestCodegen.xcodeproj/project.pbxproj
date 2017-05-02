@@ -16,6 +16,7 @@
 		A4CC1FF31EA9F8C0000A3A81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CC1FF11EA9F8C0000A3A81 /* LaunchScreen.storyboard */; };
 		A4CC1FFE1EA9F8C0000A3A81 /* TestCodegenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC1FFD1EA9F8C0000A3A81 /* TestCodegenTests.swift */; };
 		A4CC20091EA9F8C0000A3A81 /* TestCodegenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC20081EA9F8C0000A3A81 /* TestCodegenUITests.swift */; };
+		A4DB9A8A1EB7F0D000835F50 /* ThreadScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB9A891EB7F0D000835F50 /* ThreadScheduler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		A4CC20041EA9F8C0000A3A81 /* TestCodegenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestCodegenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CC20081EA9F8C0000A3A81 /* TestCodegenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCodegenUITests.swift; sourceTree = "<group>"; };
 		A4CC200A1EA9F8C0000A3A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4DB9A891EB7F0D000835F50 /* ThreadScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadScheduler.swift; sourceTree = "<group>"; };
 		F37A4C9941E8B08F3A66498E /* Pods-Abstract-TestCodegen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abstract-TestCodegen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Abstract-TestCodegen/Pods-Abstract-TestCodegen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 		A4CC1FE71EA9F8C0000A3A81 /* TestCodegen */ = {
 			isa = PBXGroup;
 			children = (
+				A4DB9A881EB7F0B900835F50 /* ThreadScheduler */,
 				A4961C8C1EAF65DA001A8E5A /* Helpers */,
 				A4CC1FE81EA9F8C0000A3A81 /* AppDelegate.swift */,
 				A4CC1FEA1EA9F8C0000A3A81 /* ViewController.swift */,
@@ -158,6 +161,14 @@
 				A4CC200A1EA9F8C0000A3A81 /* Info.plist */,
 			);
 			path = TestCodegenUITests;
+			sourceTree = "<group>";
+		};
+		A4DB9A881EB7F0B900835F50 /* ThreadScheduler */ = {
+			isa = PBXGroup;
+			children = (
+				A4DB9A891EB7F0D000835F50 /* ThreadScheduler.swift */,
+			);
+			name = ThreadScheduler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +360,7 @@
 				A4CC1FEB1EA9F8C0000A3A81 /* ViewController.swift in Sources */,
 				A4CC1FE91EA9F8C0000A3A81 /* AppDelegate.swift in Sources */,
 				A4961C8E1EAF65E8001A8E5A /* Helpers.swift in Sources */,
+				A4DB9A8A1EB7F0D000835F50 /* ThreadScheduler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

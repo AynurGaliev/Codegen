@@ -15,6 +15,7 @@ require './Services/Service + Template.rb'
 require './Parsers/Parser + Template.rb'
 require './Serializers/Serializer + Template.rb'
 require './Storage/Storage + Template.rb'
+require './DI/DI + Template.rb'
 
 data_model_path = ARGV[0]
 
@@ -33,6 +34,7 @@ project_name = project_paths.first.split("/").last.split(".").first
 entities = ModelReader::readEntities(data_model_path)
 
 bisness_logic_group = XcodeprojHelper::addGroup(project_name, project, "Business Logic")
+di_group = XcodeprojHelper::addGroup(project_name, project, "DI")
 
 transport_group = XcodeprojHelper::addGroup(project_name, project, "Transport layer", bisness_logic_group)
 entities_group = XcodeprojHelper::addGroup(project_name, project, "Data layer", bisness_logic_group)
@@ -41,12 +43,32 @@ parser_group = XcodeprojHelper::addGroup(project_name, project, "Parsers layer",
 serialization_group = XcodeprojHelper::addGroup(project_name, project, "Serializers layer", bisness_logic_group)
 storage_entities_group = XcodeprojHelper::addGroup(project_name, project, "Persistence layer", bisness_logic_group)
 
-storage_group = XcodeprojHelper::addGroup(project_name, project, "Storage", storage_entities_group)
+storage_group = XcodeprojHelper::addGroup(project_name, project, "Base", storage_entities_group)
+api_group = XcodeprojHelper::addGroup(project_name, project, "Base", transport_group)
+network_module_group = XcodeprojHelper::addGroup(project_name, project, "Network", di_group)
 
 poso_group = XcodeprojHelper::addGroup(project_name, project, "POSO", entities_group)
 machine_entities_group = XcodeprojHelper::addGroup(project_name, project, "Machine", poso_group)
 human_entities_group = XcodeprojHelper::addGroup(project_name, project, "Human", poso_group)
 model_entities_group = XcodeprojHelper::addGroup(project_name, project, "Database models", entities_group)
+
+api_file_name = "API.swift"
+api_file_header = HeaderTemplate::generateHeader(project_name, api_file_name)
+api_file_content = TransportTemplate::generateApi(api_file_header)
+XcodeprojHelper::add_file(api_file_name, api_file_content, api_group, project)
+session_manager_file_name = "SessionManager.swift"
+session_manager_header = HeaderTemplate::generateHeader(project_name, session_manager_file_name)
+session_manager_content = TransportTemplate::generateSessionManager(session_manager_header)
+XcodeprojHelper::add_file(session_manager_file_name, session_manager_content, api_group, project)
+router_file_name = "Router.swift"
+router_header = HeaderTemplate::generateHeader(project_name, router_file_name)
+router_content = TransportTemplate::generateRouter(router_header)
+XcodeprojHelper::add_file(router_file_name, router_content, api_group, project)
+
+network_module_file_name = "NetworkModule.swift"
+network_module_file_header = HeaderTemplate::generateHeader(project_name, network_module_file_name)
+network_module_content = DITemplate::generateNetworkModule(network_module_file_header, entities)
+XcodeprojHelper::add_file(network_module_file_name, network_module_content, network_module_group, project)
 
 storage_file_name = "Storage.swift"
 storage_file_header = HeaderTemplate::generateHeader(project_name, storage_file_name)

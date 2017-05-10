@@ -12,7 +12,9 @@ abstract_target 'Abstract' do
 
     pod 'SwiftyJSON'
     pod 'Swinject'
-    pod 'SwinjectStoryboard'
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    #pod 'SwinjectStoryboard'
 
     target 'TestCodegen' do
     end
